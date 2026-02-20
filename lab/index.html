@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lab | Aremu Consulting — Automation Experiments & Insights</title>
+    <meta name="description" content="Experiments in automation. Case studies, tool comparisons, tutorials, and ROI calculators. What we learned building systems that save 10+ hours weekly.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Lab | Aremu Consulting">
+    <meta property="og:description" content="Experiments in automation. Real insights from building systems that save 10+ hours weekly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aremuconsulting.com/lab/">
+    <meta property="og:image" content="https://aremuconsulting.com/assets/og-lab.png">
+    <meta property="og:site_name" content="Aremu Consulting">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Lab | Aremu Consulting">
+    <meta name="twitter:description" content="Experiments in automation. Real insights from building systems that save 10+ hours weekly.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#0a0a0f',
+                        surface: '#141419',
+                        electric: '#6366f1',
+                        cyan: '#22d3ee',
+                        accent: '#f472b6',
+                        soft: '#e2e2e2',
+                        steel: '#6b7280',
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --color-void: #0a0a0f;
+            --color-electric: #6366f1;
+            --color-cyan: #22d3ee;
+            --color-accent: #f472b6;
+            --color-steel: #6b7280;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        html, body {
+            margin: 0; padding: 0;
+            background-color: var(--color-void);
+            color: #e2e2e2;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        .scanlines {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 9998; opacity: 0.02;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+        }
+        .cursor {
+            display: inline-block; width: 12px; height: 1.2em;
+            background-color: var(--color-accent); margin-left: 4px;
+            animation: blink 1s step-end infinite; vertical-align: text-bottom;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .grid-bg {
+            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .cta-pulse { animation: pulse-glow 2s ease-in-out infinite; }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(244, 114, 182, 0); }
+        }
+        
+        /* Blog Card Styles */
+        .blog-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(107, 114, 128, 0.2);
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-electric);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+        .blog-card:hover .blog-card-image {
+            transform: scale(1.05);
+        }
+        .blog-card:hover .read-arrow {
+            transform: translateX(4px);
+        }
+        .blog-card-image {
+            transition: transform 0.6s ease;
+        }
+        .read-arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Category Filter */
+        .filter-btn {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+        .filter-btn:hover {
+            border-color: var(--color-electric);
+            color: var(--color-electric);
+        }
+        .filter-btn.active {
+            background: var(--color-electric);
+            border-color: var(--color-electric);
+            color: var(--color-void);
+        }
+        
+        /* Excerpt fade */
+        .excerpt-fade {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        }
+        
+        /* Category Tags */
+        .tag-case { background: rgba(99, 102, 241, 0.15); color: #6366f1; }
+        .tag-tool { background: rgba(34, 211, 238, 0.15); color: #22d3ee; }
+        .tag-tutorial { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+        .tag-roi { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+        .tag-bts { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-void); }
+        ::-webkit-scrollbar-thumb { background: var(--color-steel); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-electric); }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="noise-overlay"></div>
+    <div class="scanlines"></div>
+    
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="flex items-center justify-between h-20">
+                <a href="../index.html" class="flex items-center gap-3 font-display font-bold text-xl text-[#e2e2e2]">
+                    <img src="../assets/logo.png" alt="Aremu Consulting" class="h-10 w-auto">
+                    <span class="text-[#f472b6]">></span>AREMU_CONSULTING<span class="text-[#6b7280]">_</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../services/index.html" class="nav-link text-sm font-mono text-[#e2e2e2] hover:text-[#6366f1] transition-colors">Services</a>
+                    <a href="../case-studies/index.html" class="nav-link text-sm font-mono text-[#e2e2e2] hover:text-[#6366f1] transition-colors">Case_Studies</a>
+                    <a href="./index.html" class="nav-link text-sm font-mono text-[#f472b6] transition-colors">The_Lab</a>
+                    <a href="../index.html#contact-form" class="nav-link text-sm font-mono text-[#e2e2e2] hover:text-[#6366f1] transition-colors">Contact</a>
+                    <a href="../index.html#contact-form" class="px-5 py-2.5 bg-[#f472b6] text-[#0a0a0f] font-mono text-sm font-semibold hover:bg-[#e2e2e2] transition-all cta-pulse">Book_Call</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-[#e2e2e2] p-2" aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-[#141419] border-l border-[#6b7280]/30 md:hidden">
+            <div class="p-6">
+                <button id="mobile-close-btn" class="absolute top-6 right-6 text-[#e2e2e2]" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <div class="mt-16 space-y-6">
+                    <a href="../services/index.html" class="block font-mono text-[#e2e2e2]">Services</a>
+                    <a href="../case-studies/index.html" class="block font-mono text-[#e2e2e2]">Case_Studies</a>
+                    <a href="./index.html" class="block font-mono text-[#f472b6]">The_Lab</a>
+                    <a href="../index.html#contact-form" class="block font-mono text-[#e2e2e2]">Contact</a>
+                    <a href="../index.html#contact-form" class="block px-5 py-3 bg-[#f472b6] text-[#0a0a0f] font-mono text-sm font-semibold text-center">Book_Call</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[60vh] flex items-center grid-bg overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#6366f1]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-0 w-80 h-80 bg-[#22d3ee]/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative w-full px-6 lg:px-12 xl:px-20 py-32">
+            <div class="max-w-4xl">
+                <div class="font-mono text-xs text-[#6b7280] mb-6 tracking-widest reveal">
+                    <span class="text-[#f472b6]">root@aremu</span>:<span class="text-[#6366f1]">~/lab</span>$ cat manifesto.txt
+                </div>
+                <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-8 reveal">
+                    // THE_LAB<span class="cursor"></span>
+                </h1>
+                <p class="font-mono text-lg md:text-xl text-[#e2e2e2] max-w-2xl mb-4 reveal">
+                    <span class="text-[#6366f1]">Experiments</span> in Automation
+                </p>
+                <p class="font-mono text-base text-[#6b7280] max-w-xl mb-12 reveal">
+                    What we learned building systems that save <span class="text-[#22d3ee]">10+ hours weekly</span>. Case studies, tool comparisons, tutorials, and hard-won insights.
+                </p>
+                <div class="reveal">
+                    <a href="../index.html#contact-form" class="group inline-flex items-center gap-3 px-8 py-4 bg-[#f472b6] text-[#0a0a0f] font-mono font-semibold hover:bg-[#e2e2e2] transition-all cta-pulse">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span>Book Free 30-Min Call</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTER BAR -->
+    <section class="sticky top-20 z-40 bg-[#0a0a0f]/95 backdrop-blur-sm border-y border-[#6b7280]/10 py-4">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="font-mono text-xs text-[#6b7280] mr-2">// FILTER:</span>
+                <button class="filter-btn active px-4 py-2 rounded-full font-mono text-xs" data-filter="all">
+                    <span class="text-[#f472b6]">$</span> all
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full font-mono text-xs text-[#6b7280]" data-filter="case-study">
+                    <span class="text-[#6366f1]">$</span> case-studies
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full font-mono text-xs text-[#6b7280]" data-filter="tool-comparison">
+                    <span class="text-[#22d3ee]">$</span> tool-comparisons
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full font-mono text-xs text-[#6b7280]" data-filter="tutorial">
+                    <span class="text-[#f472b6]">$</span> tutorials
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full font-mono text-xs text-[#6b7280]" data-filter="roi">
+                    <span class="text-[#a855f7]">$</span> roi-calculators
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG GRID -->
+    <section class="relative py-16 md:py-24 bg-[#0a0a0f]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Post 1: Case Study -->
+                <article class="blog-card bg-[#141419] rounded-lg overflow-hidden reveal" data-category="case-study">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#6366f1]/30 to-[#22d3ee]/10">
+                        <div class="w-full h-full flex items-center justify-center blog-card-image">
+                            <svg class="w-16 h-16 text-[#6366f1]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="tag-case px-2 py-1 rounded text-xs font-mono font-semibold">CASE STUDY</span>
+                            <span class="font-mono text-xs text-[#6b7280]">8 min read</span>
+                        </div>
+                        <h2 class="font-display text-xl font-bold text-[#e2e2e2] mb-3 line-clamp-2">
+                            How ACIA Saves Insurance Firms 12 Hours Weekly
+                        </h2>
+                        <p class="font-mono text-sm text-[#6b7280] leading-relaxed mb-4 excerpt-fade">
+                            The complete breakdown of our accident claims automation system. From OCR extraction to AI triage, see how we eliminated manual data entry for a mid-sized insurance firm processing 500+ claims weekly.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#6b7280]/10">
+                            <span class="font-mono text-xs text-[#6b7280]">Jan 15, 2025</span>
+                            <a href="./how-acia-saves-insurance-firms-12-hours-weekly.html" class="flex items-center gap-1 font-mono text-sm text-[#6366f1] hover:text-[#f472b6] transition-colors">
+                                <span>Read</span>
+                                <svg class="w-4 h-4 read-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2: Tool Comparison -->
+                <article class="blog-card bg-[#141419] rounded-lg overflow-hidden reveal" data-category="tool-comparison">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#22d3ee]/30 to-[#f472b6]/10">
+                        <div class="w-full h-full flex items-center justify-center blog-card-image">
+                            <svg class="w-16 h-16 text-[#22d3ee]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="tag-tool px-2 py-1 rounded text-xs font-mono font-semibold">TOOL COMPARISON</span>
+                            <span class="font-mono text-xs text-[#6b7280]">6 min read</span>
+                        </div>
+                        <h2 class="font-display text-xl font-bold text-[#e2e2e2] mb-3 line-clamp-2">
+                            n8n vs Zapier: Which Automation Tool Wins?
+                        </h2>
+                        <p class="font-mono text-sm text-[#6b7280] leading-relaxed mb-4 excerpt-fade">
+                            After building 50+ automations on both platforms, here's the honest breakdown. Cost, flexibility, learning curve, and when to choose each. Plus our recommendation for different business sizes.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#6b7280]/10">
+                            <span class="font-mono text-xs text-[#6b7280]">Jan 10, 2025</span>
+                            <a href="./n8n-vs-zapier-comparison.html" class="flex items-center gap-1 font-mono text-sm text-[#22d3ee] hover:text-[#f472b6] transition-colors">
+                                <span>Read</span>
+                                <svg class="w-4 h-4 read-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3: Tutorial -->
+                <article class="blog-card bg-[#141419] rounded-lg overflow-hidden reveal" data-category="tutorial">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#f472b6]/30 to-[#6366f1]/10">
+                        <div class="w-full h-full flex items-center justify-center blog-card-image">
+                            <svg class="w-16 h-16 text-[#f472b6]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="tag-tutorial px-2 py-1 rounded text-xs font-mono font-semibold">TUTORIAL</span>
+                            <span class="font-mono text-xs text-[#6b7280]">5 min read</span>
+                        </div>
+                        <h2 class="font-display text-xl font-bold text-[#e2e2e2] mb-3 line-clamp-2">
+                            Build a Google Sheets Database in 30 Minutes
+                        </h2>
+                        <p class="font-mono text-sm text-[#6b7280] leading-relaxed mb-4 excerpt-fade">
+                            Turn Google Sheets into a lightweight CRM that talks to your other tools. Step-by-step guide with formulas, scripts, and n8n integration. No coding required beyond copy-paste.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#6b7280]/10">
+                            <span class="font-mono text-xs text-[#6b7280]">Jan 5, 2025</span>
+                            <a href="./google-sheets-database-tutorial.html" class="flex items-center gap-1 font-mono text-sm text-[#f472b6] hover:text-[#22d3ee] transition-colors">
+                                <span>Read</span>
+                                <svg class="w-4 h-4 read-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 4: ROI Calculator -->
+                <article class="blog-card bg-[#141419] rounded-lg overflow-hidden reveal" data-category="roi">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#a855f7]/30 to-[#22d3ee]/10">
+                        <div class="w-full h-full flex items-center justify-center blog-card-image">
+                            <svg class="w-16 h-16 text-[#a855f7]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="tag-roi px-2 py-1 rounded text-xs font-mono font-semibold">ROI CALCULATOR</span>
+                            <span class="font-mono text-xs text-[#6b7280]">4 min read</span>
+                        </div>
+                        <h2 class="font-display text-xl font-bold text-[#e2e2e2] mb-3 line-clamp-2">
+                            The Real Cost of Manual Data Entry
+                        </h2>
+                        <p class="font-mono text-sm text-[#6b7280] leading-relaxed mb-4 excerpt-fade">
+                            Interactive calculator: what's manual work actually costing you? Input your hourly rate and task frequency. The results might shock you into action. Includes industry benchmarks.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#6b7280]/10">
+                            <span class="font-mono text-xs text-[#6b7280]">Dec 28, 2024</span>
+                            <a href="./cost-of-manual-data-entry.html" class="flex items-center gap-1 font-mono text-sm text-[#a855f7] hover:text-[#f472b6] transition-colors">
+                                <span>Read</span>
+                                <svg class="w-4 h-4 read-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 5: Behind the Scenes -->
+                <article class="blog-card bg-[#141419] rounded-lg overflow-hidden reveal" data-category="case-study">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#22c55e]/30 to-[#6366f1]/10">
+                        <div class="w-full h-full flex items-center justify-center blog-card-image">
+                            <svg class="w-16 h-16 text-[#22c55e]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="tag-bts px-2 py-1 rounded text-xs font-mono font-semibold">BEHIND THE SCENES</span>
+                            <span class="font-mono text-xs text-[#6b7280]">7 min read</span>
+                        </div>
+                        <h2 class="font-display text-xl font-bold text-[#e2e2e2] mb-3 line-clamp-2">
+                            How We Built Segun: Our AI SDR Agent
+                        </h2>
+                        <p class="font-mono text-sm text-[#6b7280] leading-relaxed mb-4 excerpt-fade">
+                            The technical deep-dive into our own lead qualification system. Architecture decisions, prompts that worked (and didn't), and the lessons learned from automating our own sales process.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#6b7280]/10">
+                            <span class="font-mono text-xs text-[#6b7280]">Dec 20, 2024</span>
+                            <a href="./how-we-built-segun-ai-sdr.html" class="flex items-center gap-1 font-mono text-sm text-[#22c55e] hover:text-[#f472b6] transition-colors">
+                                <span>Read</span>
+                                <svg class="w-4 h-4 read-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 6: Case Study OCR -->
+                <article class="blog-card bg-[#141419] rounded-lg overflow-hidden reveal" data-category="case-study">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#6366f1]/30 to-[#a855f7]/10">
+                        <div class="w-full h-full flex items-center justify-center blog-card-image">
+                            <svg class="w-16 h-16 text-[#6366f1]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="tag-case px-2 py-1 rounded text-xs font-mono font-semibold">CASE STUDY</span>
+                            <span class="font-mono text-xs text-[#6b7280]">6 min read</span>
+                        </div>
+                        <h2 class="font-display text-xl font-bold text-[#e2e2e2] mb-3 line-clamp-2">
+                            OCR for Law Firms: From Paper to Digital
+                        </h2>
+                        <p class="font-mono text-sm text-[#6b7280] leading-relaxed mb-4 excerpt-fade">
+                            How we built DocketLeads, a document processing system that extracts data from legal intake forms with 95% accuracy. The full stack: OCR engine selection, AI classification, and automated case file creation.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#6b7280]/10">
+                            <span class="font-mono text-xs text-[#6b7280]">Dec 15, 2024</span>
+                            <a href="./ocr-for-law-firms.html" class="flex items-center gap-1 font-mono text-sm text-[#6366f1] hover:text-[#f472b6] transition-colors">
+                                <span>Read</span>
+                                <svg class="w-4 h-4 read-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MID-PAGE CTA -->
+    <section class="relative py-16 bg-[#141419]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="bg-[#0a0a0f] border border-[#6b7280]/20 rounded-lg p-8 md:p-12 text-center">
+                    <div class="w-16 h-16 mx-auto bg-[#f472b6]/10 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-[#f472b6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                        </svg>
+                    </div>
+                    <h2 class="font-display text-2xl md:text-3xl font-bold text-[#e2e2e2] mb-4">
+                        Want us to write about your automation challenge?
+                    </h2>
+                    <p class="font-mono text-[#6b7280] mb-8 max-w-xl mx-auto">
+                        Got a specific workflow pain point? Suggest a topic and we might feature it in The Lab with a detailed breakdown.
+                    </p>
+                    <a href="../index.html#contact-form" class="inline-flex items-center gap-2 px-8 py-4 bg-[#6366f1] text-[#e2e2e2] font-mono font-semibold hover:bg-[#22d3ee] hover:text-[#0a0a0f] transition-all">
+                        <span>Suggest a Topic</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- END-OF-PAGE CTA -->
+    <section class="relative py-24 md:py-32 bg-[#0a0a0f]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <div class="font-mono text-xs text-[#f472b6] mb-4 tracking-widest">// GET_STARTED</div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-[#e2e2e2] mb-6">Ready to Reclaim Your Time?</h2>
+                <p class="font-mono text-lg text-[#6b7280] mb-12 max-w-2xl mx-auto">
+                    Every week you wait is another week of 10+ hours down the drain. Let's fix that.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="../index.html#contact-form" class="group px-10 py-5 bg-[#f472b6] text-[#0a0a0f] font-mono font-semibold text-lg hover:bg-[#e2e2e2] transition-all cta-pulse flex items-center justify-center gap-2">
+                        <span>Book Free 30-Min Call</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <a href="../services/index.html" class="px-10 py-5 border border-[#6b7280] text-[#e2e2e2] font-mono hover:border-[#6366f1] hover:text-[#6366f1] transition-all flex items-center justify-center">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#141419] border-t border-[#6b7280]/10 py-12">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="font-display font-bold text-xl text-[#e2e2e2]"><span class="text-[#f472b6]">></span>AREMU_CONSULTING<span class="text-[#6b7280]">_</span></div>
+                <div class="flex flex-wrap justify-center gap-6 font-mono text-sm text-[#6b7280]">
+                    <a href="../services/index.html" class="hover:text-[#e2e2e2] transition-colors">Services</a>
+                    <a href="../case-studies/index.html" class="hover:text-[#e2e2e2] transition-colors">Case_Studies</a>
+                    <a href="./index.html" class="hover:text-[#e2e2e2] transition-colors">The_Lab</a>
+                    <a href="../index.html#contact-form" class="hover:text-[#e2e2e2] transition-colors">Contact</a>
+                </div>
+                <div class="font-mono text-xs text-[#6b7280]">&copy; 2025 Aremu Consulting LTD</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileCloseBtn = document.getElementById('mobile-close-btn');
+        
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        mobileCloseBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-[#0a0a0f]/95', 'backdrop-blur-sm', 'border-[#6b7280]/20');
+            } else {
+                navbar.classList.remove('bg-[#0a0a0f]/95', 'backdrop-blur-sm', 'border-[#6b7280]/20');
+            }
+        });
+        
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Category Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.add('text-[#6b7280]');
+                });
+                btn.classList.add('active');
+                btn.classList.remove('text-[#6b7280]');
+                
+                const filter = btn.dataset.filter;
+                
+                blogCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
