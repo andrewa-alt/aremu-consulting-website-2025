@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealPrep.exe | Aremu Consulting — Full ERP System</title>
+    <meta name="description" content="Complete ERP for meal prep businesses. Recipe engineering, allergen safety, nutrition labels, and delivery route optimization. 15 hours saved weekly.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#0a0a0f',
+                        surface: '#141419',
+                        electric: '#6366f1',
+                        cyan: '#22d3ee',
+                        accent: '#f472b6',
+                        soft: '#e2e2e2',
+                        steel: '#6b7280',
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --color-void: #0a0a0f;
+            --color-electric: #6366f1;
+            --color-cyan: #22d3ee;
+            --color-accent: #f472b6;
+            --color-steel: #6b7280;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        html, body {
+            margin: 0; padding: 0;
+            background-color: var(--color-void);
+            color: #e2e2e2;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        .scanlines {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 9998; opacity: 0.02;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .cta-pulse { animation: pulse-glow 2s ease-in-out infinite; }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(244, 114, 182, 0); }
+        }
+        .grid-bg {
+            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .gallery-img { transition: all 0.3s ease; }
+        .gallery-img:hover { transform: scale(1.02); }
+        .stat-card {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-void); }
+        ::-webkit-scrollbar-thumb { background: var(--color-steel); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-electric); }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="noise-overlay"></div>
+    <div class="scanlines"></div>
+    
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="flex items-center justify-between h-20">
+                <a href="../../index.html" class="flex items-center gap-3 font-display font-bold text-xl text-[#e2e2e2]">
+                    <img src="../../assets/logo.png" alt="Aremu Consulting" class="h-10 w-auto">
+                    <span class="text-[#f472b6]">></span>AREMU_CONSULTING<span class="text-[#6b7280]">_</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../../services/index.html" class="nav-link text-sm font-mono text-[#e2e2e2] hover:text-[#6366f1] transition-colors">Services</a>
+                    <a href="../index.html" class="nav-link text-sm font-mono text-[#f472b6] transition-colors">Case_Studies</a>
+                    <a href="../../lab/index.html" class="nav-link text-sm font-mono text-[#e2e2e2] hover:text-[#6366f1] transition-colors">The_Lab</a>
+                    <a href="../../index.html#contact-form" class="px-5 py-2.5 bg-[#f472b6] text-[#0a0a0f] font-mono text-sm font-semibold hover:bg-[#e2e2e2] transition-all cta-pulse">Book_Call</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-[#e2e2e2] p-2" aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-[#141419] border-l border-[#6b7280]/30 md:hidden">
+            <div class="p-6">
+                <button id="mobile-close-btn" class="absolute top-6 right-6 text-[#e2e2e2]" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <div class="mt-16 space-y-6">
+                    <a href="../../services/index.html" class="block font-mono text-[#e2e2e2]">Services</a>
+                    <a href="../index.html" class="block font-mono text-[#f472b6]">Case_Studies</a>
+                    <a href="../../lab/index.html" class="block font-mono text-[#e2e2e2]">The_Lab</a>
+                    <a href="../../index.html#contact-form" class="block px-5 py-3 bg-[#f472b6] text-[#0a0a0f] font-mono text-sm font-semibold text-center">Book_Call</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[80vh] flex items-center grid-bg overflow-hidden pt-20">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#22d3ee]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-0 w-80 h-80 bg-[#6366f1]/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative w-full px-6 lg:px-12 xl:px-20 py-24">
+            <div class="max-w-6xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="reveal">
+                        <div class="flex items-center gap-3 mb-6">
+                            <a href="../index.html" class="font-mono text-xs text-[#6b7280] hover:text-[#22d3ee] transition-colors">← Back to Case Studies</a>
+                        </div>
+                        <div class="font-mono text-xs text-[#22d3ee] mb-4 tracking-widest">// FOOD_SERVICE_ERP</div>
+                        <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6">
+                            MealPrep<span class="text-[#22d3ee]">.exe</span>
+                        </h1>
+                        <p class="font-mono text-lg text-[#6b7280] leading-relaxed mb-8">
+                            A complete ERP system built on Google Sheets for meal prep businesses. Handles recipe engineering, allergen tracking, nutrition labels, and delivery route optimization.
+                        </p>
+                        <div class="flex flex-wrap gap-4 mb-8">
+                            <div class="stat-card px-6 py-4 rounded-xl">
+                                <div class="font-display text-3xl font-bold text-[#22d3ee]">15</div>
+                                <div class="font-mono text-xs text-[#6b7280]">Hours Saved Weekly</div>
+                            </div>
+                            <div class="stat-card px-6 py-4 rounded-xl">
+                                <div class="font-display text-3xl font-bold text-[#6366f1]">100%</div>
+                                <div class="font-mono text-xs text-[#6b7280]">Google Sheets Based</div>
+                            </div>
+                        </div>
+                        <a href="../../index.html#contact-form" class="inline-flex items-center gap-2 px-8 py-4 bg-[#f472b6] text-[#0a0a0f] font-mono font-semibold hover:bg-[#e2e2e2] transition-all cta-pulse">
+                            <span>Start Similar Project</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                    <div class="reveal">
+                        <div class="relative rounded-2xl overflow-hidden border border-[#6b7280]/20">
+                            <img src="../assets/mealprep/mealprep_2.jpg" alt="MealPrep.exe Dashboard" class="w-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/80 via-transparent to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM / SOLUTION SECTION -->
+    <section class="relative py-24 bg-[#141419]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-6xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Problem -->
+                    <div class="reveal">
+                        <div class="font-mono text-xs text-[#f472b6] mb-4 tracking-widest">// THE_PROBLEM</div>
+                        <h2 class="font-display text-3xl font-bold text-[#e2e2e2] mb-6">Before: Spreadsheet Chaos</h2>
+                        <ul class="space-y-4 font-mono text-[#6b7280]">
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#f472b6] mt-1">×</span>
+                                <span>Recipe calculations done manually in multiple spreadsheets</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#f472b6] mt-1">×</span>
+                                <span>Allergen checks taking 2+ hours per menu cycle</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#f472b6] mt-1">×</span>
+                                <span>Nutrition labels created one-by-one in external software</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#f472b6] mt-1">×</span>
+                                <span>Delivery routes planned by hand, wasting fuel and time</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#f472b6] mt-1">×</span>
+                                <span>No centralized view of production requirements</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Solution -->
+                    <div class="reveal">
+                        <div class="font-mono text-xs text-[#22d3ee] mb-4 tracking-widest">// THE_SOLUTION</div>
+                        <h2 class="font-display text-3xl font-bold text-[#e2e2e2] mb-6">After: Integrated ERP</h2>
+                        <ul class="space-y-4 font-mono text-[#6b7280]">
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#22d3ee] mt-1">✓</span>
+                                <span><strong class="text-[#e2e2e2]">Recipe Engineering:</strong> Auto-scale recipes, calculate costs, manage ingredients</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#22d3ee] mt-1">✓</span>
+                                <span><strong class="text-[#e2e2e2]">Allergen Safety:</strong> Automatic cross-contamination flags and customer warnings</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#22d3ee] mt-1">✓</span>
+                                <span><strong class="text-[#e2e2e2]">Nutrition Labels:</strong> Auto-generated compliant labels for every dish</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#22d3ee] mt-1">✓</span>
+                                <span><strong class="text-[#e2e2e2]">Route Optimization:</strong> Google Maps API integration for efficient delivery</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-[#22d3ee] mt-1">✓</span>
+                                <span><strong class="text-[#e2e2e2]">Production Dashboard:</strong> Real-time prep lists and inventory requirements</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK SECTION -->
+    <section class="relative py-24 bg-[#0a0a0f]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-4xl mx-auto text-center mb-16 reveal">
+                <div class="font-mono text-xs text-[#6366f1] mb-4 tracking-widest">// TECHNOLOGY_STACK</div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-6">Built on Google Workspace</h2>
+                <p class="font-mono text-[#6b7280]">No expensive ERP licenses. No complex deployments. Just powerful automation on familiar tools.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="bg-[#141419] border border-[#6b7280]/20 rounded-xl p-6 text-center reveal">
+                    <div class="w-12 h-12 mx-auto bg-[#22d3ee]/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <div class="font-display font-semibold text-[#e2e2e2]">Google Sheets</div>
+                    <div class="font-mono text-xs text-[#6b7280] mt-1">Database + UI</div>
+                </div>
+                <div class="bg-[#141419] border border-[#6b7280]/20 rounded-xl p-6 text-center reveal">
+                    <div class="w-12 h-12 mx-auto bg-[#6366f1]/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    <div class="font-display font-semibold text-[#e2e2e2]">Apps Script</div>
+                    <div class="font-mono text-xs text-[#6b7280] mt-1">Automation</div>
+                </div>
+                <div class="bg-[#141419] border border-[#6b7280]/20 rounded-xl p-6 text-center reveal">
+                    <div class="w-12 h-12 mx-auto bg-[#f472b6]/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#f472b6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div class="font-display font-semibold text-[#e2e2e2]">Google Maps API</div>
+                    <div class="font-mono text-xs text-[#6b7280] mt-1">Route Optimization</div>
+                </div>
+                <div class="bg-[#141419] border border-[#6b7280]/20 rounded-xl p-6 text-center reveal">
+                    <div class="w-12 h-12 mx-auto bg-[#22d3ee]/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#22d3ee]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 8m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                    </div>
+                    <div class="font-display font-semibold text-[#e2e2e2]">Google APIs</div>
+                    <div class="font-mono text-xs text-[#6b7280] mt-1">Integration</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="relative py-24 bg-[#141419]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <div class="font-mono text-xs text-[#22d3ee] mb-4 tracking-widest">// SYSTEM_GALLERY</div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2]">Screenshots</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-img rounded-xl overflow-hidden border border-[#6b7280]/20 reveal">
+                        <img src="../assets/mealprep/mealprep_2.jpg" alt="Dashboard" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="gallery-img rounded-xl overflow-hidden border border-[#6b7280]/20 reveal">
+                        <img src="../assets/mealprep/mealprep_3.jpg" alt="Recipe View" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="gallery-img rounded-xl overflow-hidden border border-[#6b7280]/20 reveal">
+                        <img src="../assets/mealprep/mealprep_4.jpg" alt="Nutrition Labels" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="gallery-img rounded-xl overflow-hidden border border-[#6b7280]/20 reveal">
+                        <img src="../assets/mealprep/mealprep_5.jpg" alt="Production View" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="gallery-img rounded-xl overflow-hidden border border-[#6b7280]/20 reveal">
+                        <img src="../assets/mealprep/mealprep_6.jpg" alt="Route Optimization" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="gallery-img rounded-xl overflow-hidden border border-[#6b7280]/20 reveal">
+                        <img src="../assets/mealprep/mealprep_7.jpg" alt="Reports" class="w-full h-64 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section class="relative py-24 bg-[#0a0a0f]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <div class="font-mono text-xs text-[#f472b6] mb-4 tracking-widest">// RESULTS</div>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-12">Real Impact</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-[#141419] border border-[#6b7280]/20 rounded-2xl p-8 reveal">
+                        <div class="font-display text-5xl font-bold text-[#22d3ee] mb-2">15</div>
+                        <div class="font-mono text-[#6b7280]">Hours Saved Weekly</div>
+                        <div class="font-mono text-xs text-[#6366f1] mt-2">60+ hours/month</div>
+                    </div>
+                    <div class="bg-[#141419] border border-[#6b7280]/20 rounded-2xl p-8 reveal">
+                        <div class="font-display text-5xl font-bold text-[#6366f1] mb-2">0</div>
+                        <div class="font-mono text-[#6b7280]">Software Licenses</div>
+                        <div class="font-mono text-xs text-[#6366f1] mt-2">Uses Google Workspace</div>
+                    </div>
+                    <div class="bg-[#141419] border border-[#6b7280]/20 rounded-2xl p-8 reveal">
+                        <div class="font-display text-5xl font-bold text-[#f472b6] mb-2">4</div>
+                        <div class="font-mono text-[#6b7280]">Weeks to Deploy</div>
+                        <div class="font-mono text-xs text-[#6366f1] mt-2">From kickoff to live</div>
+                    </div>
+                </div>
+                
+                <a href="../../index.html#contact-form" class="inline-flex items-center gap-2 px-10 py-5 bg-[#f472b6] text-[#0a0a0f] font-mono font-semibold text-lg hover:bg-[#e2e2e2] transition-all cta-pulse">
+                    <span>Start Your ERP Project</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#141419] border-t border-[#6b7280]/10 py-12">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="font-display font-bold text-xl text-[#e2e2e2]"><span class="text-[#f472b6]">></span>AREMU_CONSULTING<span class="text-[#6b7280]">_</span></div>
+                <div class="flex flex-wrap justify-center gap-6 font-mono text-sm text-[#6b7280]">
+                    <a href="../../services/index.html" class="hover:text-[#e2e2e2] transition-colors">Services</a>
+                    <a href="../index.html" class="hover:text-[#e2e2e2] transition-colors">Case_Studies</a>
+                    <a href="../../lab/index.html" class="hover:text-[#e2e2e2] transition-colors">The_Lab</a>
+                    <a href="../../index.html#contact-form" class="hover:text-[#e2e2e2] transition-colors">Contact</a>
+                </div>
+                <div class="font-mono text-xs text-[#6b7280]">&copy; 2025 Aremu Consulting LTD</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileCloseBtn = document.getElementById('mobile-close-btn');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        }
+        if (mobileCloseBtn && mobileMenu) {
+            mobileCloseBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        }
+        
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-[#0a0a0f]/95', 'backdrop-blur-sm', 'border-[#6b7280]/20');
+            } else {
+                navbar.classList.remove('bg-[#0a0a0f]/95', 'backdrop-blur-sm', 'border-[#6b7280]/20');
+            }
+        });
+    </script>
+</body>
+</html>
