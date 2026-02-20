@@ -465,16 +465,16 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileCloseBtn = document.getElementById('mobile-close-btn');
-        
+
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.add('active');
+                mobileMenu.classList.add('open');
             });
         }
-        
+
         if (mobileCloseBtn && mobileMenu) {
             mobileCloseBtn.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
+                mobileMenu.classList.remove('open');
             });
         }
         
