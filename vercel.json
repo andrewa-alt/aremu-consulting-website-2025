@@ -1,7 +1,12 @@
 {
   "version": 2,
-  "routes": [
-    { "src": "/services", "dest": "/services/index.html" },
-    { "src": "/services/(.*)", "dest": "/services/index.html" }
-  ]
+  "framework": null,
+  "rewrites": [
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/services/", "destination": "/services/index.html" }
+  ],
+  "github": {
+    "enabled": true,
+    "autoJobCancelation": true
+  }
 }
