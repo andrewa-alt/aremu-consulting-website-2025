@@ -1,0 +1,67 @@
+Product Description: MealPrep.exe
+The All-in-One Operations Engine for Independent Meal Prep Businesses
+
+Executive Overview
+MealPrep.exe is a sophisticated, automated Enterprise Resource Planning (ERP) solution built entirely within the Google Workspace ecosystem. It transitions a meal prep business from manual spreadsheet tracking to a high-performance, data-driven operation. By integrating customer CRM, automated recipe engineering, nutritional analysis, production planning, and AI-driven logistics, MealPrep.exe eliminates human error and optimizes the entire lifecycle of a food order—from the first click to the final delivery.
+
+Core Modules & Capabilities
+1. Smart Order Intake & CRM Integration
+The system doesn't just record orders; it validates them.
+
+Customer Sync: Automatically matches new order responses against a master client database.
+
+Allergen Safety Net: Cross-references customer profiles to instantly flag specific dietary requirements (e.g., Peanuts, Soybeans, Lupin) directly onto the active prep sheet, ensuring kitchen safety.
+
+Duplicate Prevention: Uses unique timestamp/phone identifiers to prevent accidental double-processing.
+
+2. Automated Recipe Engineering (The R&D Engine)
+MealPrep.exe features a custom UI for recipe creation that bridges the gap between a chef's kitchen and a lab's precision.
+
+Ingredient Database: Leverages massive libraries of nutritional data (Vegetables, Meats, Dairy, etc.) categorized by food group.
+
+Live Nutritional Scaling: As recipes are built, the system calculates Calories, Carbs, Fats, and Proteins based on the exact gram-weight of ingredients, providing instant "Per Meal" nutritional facts.
+
+Costing & Pricing: Automatically pulls current ingredient prices to ensure every meal sold maintains its target profit margin.
+
+3. Production Intelligence
+Before a single pan is heated, MealPrep.exe provides the kitchen with a "Game Plan."
+
+Batch Count Automation: The system scans all active orders and generates a "Recipe Count" report. It tells the chef exactly how many units of each meal (e.g., "15x Eggs on Toast," "12x Lemon Curd") are required for a specific date range, minimizing food waste and maximizing prep efficiency.
+
+4. Workflow & Order Lifecycle Management
+The system uses a rigid, professional pipeline to move data through the business:
+
+Active Orders: A formatted production hub with visual separators, checkboxes, and order-value summaries.
+
+Quality Control Gate: Before an order can move to Dispatch, the system forces a "Final Check" prompt to ensure allergen requirements and packaging standards are met.
+
+History & Archiving: Once fulfilled, orders are moved to a permanent History log, creating a searchable trail for accounting and customer support.
+
+5. Logistics & Route Optimization (The Delivery Brain)
+MealPrep.exe replaces manual route planning with high-level API integration.
+
+Geocoding: Converts customer addresses into precise Latitude/Longitude coordinates.
+
+AI Route Mapping: Communicates with the Google Routes API to find the most efficient delivery path, starting and ending at the business headquarters.
+
+Mobile-Ready Directions: Generates a dynamic Google Maps URL for drivers, allowing them to open the optimized route on their phones with a single click.
+
+Technical Architecture
+Platform: Google Sheets / Apps Script.
+
+UI/UX: Custom HTML/JavaScript Modal Dialogs for Recipe Entry and Production Counting.
+
+External APIs: Google Geocoding API, Google Routes (v2) API.
+
+Data Structure: Relational-style linking between Client, Recipe, and Ingredient datasets.
+
+Value Proposition
+Zero-Cost Infrastructure: By leveraging Google Sheets, the business avoids expensive monthly SaaS subscriptions while maintaining the power of custom software.
+
+Liability Reduction: Automated allergen flagging reduces the risk of food safety incidents.
+
+Operational Speed: What would take hours of manual counting and route planning is handled by the system in seconds.
+
+Scalability: The architecture allows for an infinite number of recipes and ingredients to be added without slowing down the core ordering process.
+
+MealPrep.exe is more than a spreadsheet; it is a digital sous-chef and logistics manager, allowing food entrepreneurs to focus on cooking while the code handles the complexity of the business.

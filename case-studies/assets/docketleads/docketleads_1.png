@@ -1,0 +1,19 @@
+DocketLeads AI is an intelligent document processing (IDP) solution that automates the extraction of high-value personal injury leads from handwritten towing dockets. By combining the visual intelligence of GPT-4o with high-precision OCR, it eliminates manual data entry and ensures no potential case slips through the cracks.
+
+### Key Features
+Multi-Engine OCR Verification: Uses a "Double-Check" logic. It processes images through both OpenAI Vision (for contextual understanding) and OCR.space (for raw text accuracy) to resolve messy handwriting.
+
+WhatsApp-Native Intake: Designed for field use. Tow truck drivers or investigators simply snap a photo and send it via WhatsApp; the system handles the rest.
+
+Intelligent Field Mapping: Automatically identifies and structures critical data points:
+
+Victim Info: Owner Name, Phone Number, and Suburb.
+
+Incident Data: Vehicle Make/Model, Plate Number (distinguishing the victim's car from the tow truck), and Location.
+
+Temporal Tracking: Precise Date and Time extraction for incident logging.
+
+Automated Lead Logging: Instantly pushes cleaned, validated data into Google Sheets or your CRM, ready for immediate follow-up by your intake team.
+
+### The "Legal Edge" (Why it works)
+In personal injury law, speed to lead is everything. Handwritten dockets often sit in gloveboxes or on clipboards for days. DocketLeads AI digitizes this data in seconds, allowing law firms to reach out to accident victims while the incident is still fresh, significantly increasing conversion rates.

@@ -1,0 +1,28 @@
+LedgerLens: The AI Accounting Gateway
+LedgerLens is an intelligent automation system that transforms the chaotic influx of financial documents into structured, audit-ready data. By leveraging Large Language Models (LLM) and computer vision logic, it monitors your accounts in real-time to capture every expense the moment it occurs—no manual data entry required.
+
+🚀 Key Capabilities
+1. Zero-Touch Expense Capture
+The system acts as a 24/7 digital clerk for your invoices@ or receipts@ inbox. It autonomously detects new emails, identifies whether the data is in the email body or an attachment, and begins processing immediately.
+
+The Benefit: Eliminates the "end-of-month" box of receipts. Your bookkeeping stays current to the minute.
+
+2. Multi-Channel AI Extraction
+Whether an invoice arrives as a professional PDF, a messy image of a thermal receipt, or just text in the body of an email, LedgerLens uses OpenRouter AI to "read" the document like a human accountant would.
+
+Structured Data: It extracts Date, Vendor, Amount, Currency, and Expense Category (e.g., Travel, Utility, Subscription) with pinpoint accuracy.
+
+3. Automatic Document Digitalization
+Not every receipt comes as a file. If an invoice is sent as a formatted email (like an Uber or Amazon receipt), the system automatically converts the HTML into a clean, professional PDF.
+
+The Benefit: Every single transaction—even those without original attachments—is archived as a standardized PDF in your permanent records.
+
+4. Intelligent Naming & Filing
+Forget files named IMG_592.jpg. The system renames every document using a "kebab-case" logic (e.g., 2024-05-12-adobe-subscription-14-99.pdf) and uploads it directly to a secure Google Drive folder.
+
+The Benefit: Instant searchability. You or your accountant can find any document in seconds by searching for the date, vendor, or amount.
+
+5. Live Ledger Sync
+Once the data is extracted and the file is saved, the system appends a new row to your Google Sheets Master Ledger, including a direct clickable link to the archived file.
+
+The Benefit: Your spreadsheet becomes a live financial dashboard. You have a "paper trail" that is fully linked and ready for tax season.
