@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse | Aremu Consulting</title>
+    <meta name="description" content="Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#0a0a0f',
+                        surface: '#141419',
+                        electric: '#6366f1',
+                        cyan: '#22d3ee',
+                        accent: '#f472b6',
+                        soft: '#e2e2e2',
+                        steel: '#6b7280',
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0f;
+            color: #e2e2e2;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-void">
+    <nav class="border-b border-steel/20">
+        <div class="max-w-5xl mx-auto px-6 py-6">
+            <a href="../index.html" class="text-electric hover:text-cyan transition-colors font-mono">← Back to Home</a>
+        </div>
+    </nav>
+    
+    <article class="max-w-4xl mx-auto px-6 py-16">
+        <header class="mb-12">
+            <p class="text-steel font-mono text-sm mb-4">February 25, 2026</p>
+            <img src="images/image1.png" alt="Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse" class="w-full rounded-lg mb-8 border border-electric/20">
+        </header>
+        
+        <div class="prose prose-invert max-w-none">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-electric mb-8">Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse</h1>
+
+<p class="text-soft leading-relaxed mb-4">Your real-time inventory sync is failing. Not dramatically—quietly. While you sleep, while you focus on marketing, while your team processes orders, your Shopify-to-warehouse data pipeline is silently drifting out of alignment. By the time you notice, you've already oversold three products and disappointed four customers.</p>
+
+<p class="text-soft leading-relaxed mb-4">This isn't a technology problem. It's an architecture problem that costs small e-commerce businesses £6,000-10,000 monthly in lost sales, manual reconciliation labor, and damaged customer relationships.</p>
+
+<h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">Why Your "Real-Time" Sync Isn't Real</h2>
+
+<p class="text-soft leading-relaxed mb-4">The gap between Shopify's inventory count and your warehouse spreadsheet isn't obvious until it's catastrophic. API rate limits, formula errors, and manual CSV imports create a version control nightmare that no amount of careful checking can fully prevent.</p>
+
+<p class="text-soft leading-relaxed mb-4">When Sarah in the warehouse updates stock levels in her spreadsheet at 2:47 PM, and Tom processes three orders through Shopify at 2:48 PM, those transactions exist in parallel universes until someone manually reconciles them—usually the next morning, usually after a customer complaint.</p>
+
+<h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">The Architecture That Actually Works</h2>
+
+<p class="text-soft leading-relaxed mb-4">Effective inventory management requires treating your stock data as the single source of truth it should be, not the fragmented mess it currently is.</p>
+
+<strong class="text-accent">Phase 1: Immediate Stabilization (£3,000, 1-2 weeks)</strong>
+
+<p class="text-soft leading-relaxed mb-4">The goal is stopping the bleeding. Implement automated hourly sync checks with email alerts when discrepancies exceed 5 units. Create a simple reconciliation dashboard showing Shopify vs. warehouse levels side-by-side. Log all stock changes with timestamps for audit trails.</p>
+
+<p class="text-soft leading-relaxed mb-4">This isn't elegant, but it prevents overselling and gives you visibility into the problem's scope.</p>
+
+<strong class="text-accent">Phase 2: Proper Integration (£7,000, 3-4 weeks)</strong>
+
+<p class="text-soft leading-relaxed mb-4">Now we build the system that should have existed from day one. Airtable or PostgreSQL becomes your single source of truth. n8n workflows handle bidirectional sync between Shopify, warehouse systems, and accounting software. Webhooks ensure near real-time updates. Automated low-stock alerts prevent the frantic "do we actually have this?" conversations.</p>
+
+<p class="text-soft leading-relaxed mb-4">Your team continues using familiar interfaces, but the data layer is finally robust.</p>
+
+<strong class="text-accent">Phase 3: Strategic Optimization (£12,000, 6-8 weeks)</strong>
+
+<p class="text-soft leading-relaxed mb-4">With stable data flows, we add predictive capabilities. Automated reorder points based on velocity. Multi-channel inventory unification if you sell on Amazon/eBay. Supplier integration for automated purchase orders. Advanced analytics showing true carrying costs and optimal stock levels.</p>
+
+<h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">The ROI Is Uncomfortable</h2>
+
+<p class="text-soft leading-relaxed mb-4">A 20-person e-commerce operation typically wastes 4 hours daily on stock-related chaos:</p>
+
+<p class="text-soft leading-relaxed mb-4">- Manual stock checks: £3,600/week</p>
+<p class="text-soft leading-relaxed mb-4">- Oversell incidents: £400/week  </p>
+<p class="text-soft leading-relaxed mb-4">- Reconciliation work: £270/week</p>
+<p class="text-soft leading-relaxed mb-4">- <strong class="text-accent">Total: £4,270/week = £222,040 annually</strong></p>
+
+<p class="text-soft leading-relaxed mb-4">A Phase 2 implementation costs £7,000. It pays for itself in 8.5 days.</p>
+
+<p class="text-soft leading-relaxed mb-4">The alternative? Continue subsidizing inefficiency with staff overtime and customer goodwill until a major stockout damages your reputation.</p>
+
+<h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">Implementation Roadmap</h2>
+
+<strong class="text-accent">Week 1:</strong> Audit current inventory touchpoints. Document every system that touches stock data. Identify the 3-5 most problematic SKUs.
+
+<strong class="text-accent">Week 2-3:</strong> Implement Phase 1 stabilization. Hourly sync checks, basic reconciliation dashboard, alert system.
+
+<strong class="text-accent">Week 4-7:</strong> Build Phase 2 architecture. Database backend, n8n workflows, webhook integrations.
+
+<strong class="text-accent">Week 8:</strong> Training and transition. Migrate team workflows to new system. Monitor for edge cases.
+
+<h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">Start With Data, Not Software</h2>
+
+<p class="text-soft leading-relaxed mb-4">Before buying any solution, quantify your current costs. Track time spent on inventory management for two weeks. Count oversell incidents. Calculate the true cost of stockouts including customer service time and reputation impact.</p>
+
+<p class="text-soft leading-relaxed mb-4">Armed with these numbers, you can evaluate any solution objectively. Does it reduce your £4,270 weekly cost? Does it pay for itself within a quarter?</p>
+
+<p class="text-soft leading-relaxed mb-4">Your inventory sync isn't failing dramatically. It's failing expensively. Fix the architecture, and the operational headaches solve themselves.</p>
+
+        </div>
+        
+        <footer class="mt-16 pt-8 border-t border-steel/20">
+            <div class="bg-surface border border-electric/20 rounded-lg p-8">
+                <h3 class="text-2xl font-display font-semibold text-electric mb-4">Ready to automate your workflow?</h3>
+                <p class="text-soft mb-6">Let's discuss how we can save you 10+ hours per week.</p>
+                <a href="mailto:hello@aremuconsulting.com" class="inline-block bg-electric hover:bg-cyan text-void font-semibold px-6 py-3 rounded-lg transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </footer>
+    </article>
+</body>
+</html>
