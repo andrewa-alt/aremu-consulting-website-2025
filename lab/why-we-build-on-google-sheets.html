@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why We Build On Google Sheets (Not Replace It) | Aremu Consulting</title>
+    <meta name="description" content="Our philosophy: meet clients where they are. Google Sheets is a powerful automation platform when used properly — here's why we enhance it instead of replacing it.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#0a0a0f',
+                        surface: '#141419',
+                        electric: '#6366f1',
+                        cyan: '#22d3ee',
+                        accent: '#f472b6',
+                        soft: '#e2e2e2',
+                        steel: '#6b7280',
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0f;
+            color: #e2e2e2;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-void">
+    <nav class="border-b border-steel/20">
+        <div class="max-w-5xl mx-auto px-6 py-6">
+            <a href="../index.html" class="text-electric hover:text-cyan transition-colors font-mono">← Back to Home</a>
+        </div>
+    </nav>
+    
+    <article class="max-w-4xl mx-auto px-6 py-16">
+        <header class="mb-12">
+            <p class="text-steel font-mono text-sm mb-4">March 1, 2026</p>
+            <h1 class="text-4xl font-display font-bold text-cyan mb-6">Why We Build On Google Sheets (Not Replace It)</h1>
+            <p class="text-xl text-soft leading-relaxed">Our philosophy: meet clients where they are. Google Sheets isn't a limitation — it's a powerful automation platform when enhanced properly.</p>
+        </header>
+        
+        <div class="prose prose-invert max-w-none">
+            <h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">The Migration Trap</h2>
+
+<p class="text-soft leading-relaxed mb-4">There's a pattern in automation consulting that drives me crazy:</p>
+
+<p class="text-soft leading-relaxed mb-4">Client has a problem with their Google Sheets workflow. Consultant diagnoses it, nods sagely, and says: "You've outgrown Sheets. You need [expensive enterprise platform]. Here's a quote for £25,000."</p>
+
+<p class="text-soft leading-relaxed mb-4">That's not consulting. That's product-first thinking dressed up as advice.</p>
+
+<p class="text-soft leading-relaxed mb-4">Here's the truth: <strong>90% of businesses that think they've "outgrown" Google Sheets haven't outgrown the platform — they've outgrown their current <em>implementation</em>.</strong></p>
+
+<p class="text-soft leading-relaxed mb-4">And fixing the implementation is orders of magnitude cheaper, faster, and less disruptive than migrating to a new system.</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">What Google Sheets Actually Is</h3>
+
+<p class="text-soft leading-relaxed mb-4">Most people see Google Sheets as "a spreadsheet program." That's underselling it by about 90%.</p>
+
+<p class="text-soft leading-relaxed mb-4">Google Sheets is:</p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>A <strong>collaborative database</strong> with built-in access controls</li>
+    <li>An <strong>automation platform</strong> (Google Apps Script is JavaScript with API access to the entire Google Workspace)</li>
+    <li>A <strong>UI layer</strong> that everyone already knows how to use</li>
+    <li>A <strong>reporting engine</strong> with native visualization tools</li>
+    <li>A <strong>webhook endpoint</strong> that can trigger workflows in n8n, Zapier, Make</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4">When you see it this way, suddenly the question changes from "Should we migrate off Sheets?" to "How do we use Sheets as the foundation it's meant to be?"</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">The Cost of Migration Nobody Talks About</h3>
+
+<p class="text-soft leading-relaxed mb-4">Let's say you migrate from Google Sheets to a £15,000 financial management platform. Here's what you're actually paying:</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Direct costs:</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>£15,000 - £50,000: Platform license (first year)</li>
+    <li>£10,000 - £30,000: Implementation / consulting</li>
+    <li>£5,000 - £15,000: Training</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Hidden costs:</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>3-6 months: Migration timeline (your team is operating half-blind during this)</li>
+    <li>2-3 months: Learning curve after launch (productivity dip while everyone figures out the new system)</li>
+    <li>Ongoing: Vendor lock-in (switching costs only increase over time)</li>
+    <li>Ongoing: You now depend on a vendor's roadmap, not your own needs</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Total:</strong> £30,000 - £95,000 in year one, plus 6-9 months of disruption.</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Alternative:</strong> £1,200 - £3,000 to enhance your existing Google Sheets with automation, validation, and structured workflows. Deployed in 1-3 weeks. Zero retraining.</p>
+
+<p class="text-soft leading-relaxed mb-4">The ROI math isn't subtle.</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">What "Enhancement" Looks Like</h3>
+
+<p class="text-soft leading-relaxed mb-4">When we say "enhance," here's what we mean:</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>1. Apps Script automation</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>Replace volatile formulas with triggered functions (faster, more reliable)</li>
+    <li>Auto-archive old data to keep working datasets lean</li>
+    <li>Custom functions for complex business logic</li>
+    <li>Scheduled reports that generate themselves</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4"><strong>2. Validation and protection</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>Lock critical formulas and calculation cells</li>
+    <li>Smart validation that rejects bad data at entry</li>
+    <li>Audit trails that log every change (who, what, when)</li>
+    <li>Approval workflows for sensitive edits</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4"><strong>3. External integrations</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>n8n workflows that sync Sheets with your CRM, accounting system, etc.</li>
+    <li>Slack/Teams notifications for key events</li>
+    <li>API connections to external data sources</li>
+    <li>Webhook triggers for real-time updates</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Result:</strong> Your Google Sheet <em>feels</em> like an expensive enterprise system — instant updates, structured workflows, full audit trails — but it's still the same tool your team already knows.</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">When We <em>Do</em> Recommend Migration</h3>
+
+<p class="text-soft leading-relaxed mb-4">We're not dogmatic. There are real limits to Google Sheets, and we'll tell you when you've hit them:</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Migrate when:</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li><strong>Row-level security is mandatory:</strong> You need each user to only see their own data, with no workaround (e.g., salespeople should never see each other's pipelines)</li>
+    <li><strong>You're consistently hitting 10 million cells</strong> even with optimization</li>
+    <li><strong>Real-time transactional logic is required:</strong> Like inventory management with stock locking across multiple warehouses</li>
+    <li><strong>Compliance demands immutable audit trails</strong> that Google Sheets' version history can't provide</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4">But for most SMBs, solopreneurs, and agencies? You're nowhere near these limits. You're losing time to <strong>manual processes</strong>, not platform constraints.</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">Real Example: From "Needs Migration" to £1,200 Fix</h3>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Client:</strong> 8-person marketing agency</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Problem:</strong> Client pipeline spreadsheet was "too slow, too error-prone, collaboration is chaotic."</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>What other consultants recommended:</strong> Migrate to a project management platform (£12k/year) or custom database (£25k build).</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>What we did:</strong></p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>Protected formula rows (no more accidental deletions)</li>
+    <li>Replaced <code>VLOOKUP</code> chains with Apps Script lookups (10x faster)</li>
+    <li>Added data validation rules (reject invalid entries)</li>
+    <li>Built audit log (track every change)</li>
+    <li>Set up n8n workflow: Sheets → HubSpot sync (auto-update CRM)</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4"><strong>Cost:</strong> £1,200 one-time</p>
+<p class="text-soft leading-relaxed mb-4"><strong>Timeline:</strong> 2 weeks</p>
+<p class="text-soft leading-relaxed mb-4"><strong>Retraining required:</strong> Zero (same interface, better guardrails)</p>
+<p class="text-soft leading-relaxed mb-4"><strong>Result:</strong> Load time dropped from 30 seconds to 3. Formula errors eliminated. Collaboration conflicts resolved. Time saved: 6 hours/week.</p>
+
+<p class="text-soft leading-relaxed mb-4">They've scaled from 8 to 14 people since then. Still using the same enhanced Sheets system.</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">Our Philosophy: Tool-Agnostic, Outcome-Focused</h3>
+
+<p class="text-soft leading-relaxed mb-4">We're not "Google Sheets evangelists." We're problem solvers who believe in meeting clients where they are.</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>If you're already using Google Sheets:</strong> We'll make it work like a £50k system.</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>If you're using Excel:</strong> We'll enhance that instead.</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>If you're using Airtable, Notion, or a custom database:</strong> We'll automate the manual parts, not rip it out.</p>
+
+<p class="text-soft leading-relaxed mb-4"><strong>If you genuinely need to migrate:</strong> We'll tell you, help you pick the right platform, and build the migration workflow.</p>
+
+<p class="text-soft leading-relaxed mb-4">But 9 times out of 10? The problem isn't the tool. It's the lack of automation, validation, and structure.</p>
+
+<p class="text-soft leading-relaxed mb-4">Fix those, and you'll get years of value out of the system you already have — with a fraction of the cost and disruption of migration.</p>
+
+<h3 class="text-2xl font-display font-medium text-soft mt-8 mb-4">The Bottom Line</h3>
+
+<p class="text-soft leading-relaxed mb-4">We build on Google Sheets because:</p>
+<ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+    <li>It's <strong>already adopted</strong> — your team knows it</li>
+    <li>It's <strong>flexible</strong> — we can enhance it to do almost anything</li>
+    <li>It's <strong>cost-effective</strong> — £1,200 beats £30,000 every time</li>
+    <li>It's <strong>fast to deploy</strong> — weeks, not months</li>
+    <li>It's <strong>yours</strong> — no vendor lock-in, no recurring fees</li>
+</ul>
+
+<p class="text-soft leading-relaxed mb-4">This isn't about defending a tool. It's about <strong>respecting your time, budget, and workflow</strong>.</p>
+
+<p class="text-soft leading-relaxed mb-4">If Google Sheets (or Excel, or whatever you're using) can be enhanced to solve your problem, that's what we'll recommend.</p>
+
+<p class="text-soft leading-relaxed mb-4">No upsell. No vendor kickbacks. Just the most efficient path to getting your time back.</p>
+        </div>
+        
+        <footer class="mt-16 pt-8 border-t border-steel/20">
+            <div class="bg-surface border border-electric/20 rounded-lg p-8">
+                <h3 class="text-2xl font-display font-semibold text-electric mb-4">Want to see what's automatable in your system?</h3>
+                <p class="text-soft mb-6">Book a free 30-minute call. We'll walk through your current setup and show you exactly what can be enhanced — even if we don't work together.</p>
+                <a href="mailto:hello@aremuconsulting.com" class="inline-block bg-electric hover:bg-cyan text-void font-semibold px-6 py-3 rounded-lg transition-colors">
+                    Book Free Call
+                </a>
+            </div>
+        </footer>
+    </article>
+</body>
+</html>
