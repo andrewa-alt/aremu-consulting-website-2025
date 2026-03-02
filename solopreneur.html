@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solopreneur Automation | Aremu Consulting — £500-£1,500 for Your First Automation</title>
+    <meta name="description" content="Automations starting at £500 for solopreneurs. Invoice reminders, lead tracking, email follow-ups. Build while you sleep.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#0a0a0f',
+                        surface: '#141419',
+                        electric: '#6366f1',
+                        cyan: '#22d3ee',
+                        accent: '#f472b6',
+                        soft: '#e2e2e2',
+                        steel: '#6b7280',
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --color-void: #0a0a0f;
+            --color-electric: #6366f1;
+            --color-cyan: #22d3ee;
+            --color-accent: #f472b6;
+            --color-steel: #6b7280;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0; padding: 0;
+            background-color: var(--color-void);
+            color: #e2e2e2;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height'100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        .scanlines {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none; z-index: 9998; opacity: 0.02;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+        }
+        .cursor {
+            display: inline-block; width: 12px; height: 1.2em;
+            background-color: var(--color-accent); margin-left: 4px;
+            animation: blink 1s step-end infinite; vertical-align: text-bottom;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .grid-bg {
+            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .template-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .template-card:hover {
+            border-color: var(--color-electric);
+            transform: translateY(-4px);
+        }
+        .cta-pulse { animation: pulse-glow 2s ease-in-out infinite; }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(244, 114, 182, 0); }
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-void); }
+        ::-webkit-scrollbar-thumb { background: var(--color-steel); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-electric); }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="noise-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <nav class="border-b border-steel/20">
+        <div class="max-w-5xl mx-auto px-6 py-6">
+            <a href="../index.html" class="text-electric hover:text-cyan transition-colors font-mono">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-[80vh] flex items-center grid-bg">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 right-0 w-96 h-96 bg-electric/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-0 w-80 h-80 bg-cyan/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative w-full px-6 py-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="font-mono text-xs text-steel mb-4 tracking-widest">
+                    <span class="text-accent">/solopreneur</span>
+                </div>
+                <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+                    <span class="text-cyan">Automation</span> <span class="text-electric">Starting</span> At <span class="text-accent">£500</span>
+                </h1>
+                <p class="font-mono text-lg md:text-xl text-steel leading-relaxed mb-8">
+                    You're building a business one person at a time. Don't spend 10+ hours/week on admin work.<br>
+                    <span class="text-steel">Let's make your tools work smarter — not harder.</span>
+                </p>
+
+                <!-- AUDIT CTA -->
+                <div class="bg-surface border border-electric/20 rounded-lg p-8 max-w-xl mb-8 reveal">
+                    <div class="font-mono text-xs text-accent mb-2 tracking-widest">// START HERE</div>
+                    <h2 class="font-display text-xl font-bold text-soft mb-4">Free 30-Min Audit</h2>
+                    <p class="font-mono text-sm text-steel mb-4">I'll walk through your system and show you exactly what can be automated — even if we don't work together.</p>
+                    <a href="../index.html#contact-form" class="inline-block bg-electric hover:bg-cyan text-void font-mono text-sm font-semibold px-6 py-3 rounded transition-all">
+                        Book Free Audit
+                    </a>
+                </div>
+
+                <!-- Pricing Preview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
+                    <div class="bg-surface border border-transparent hover:border-electric/30 p-6 rounded-lg">
+                        <div class="font-display text-3xl font-bold text-electric mb-2">£500-£1,500</div>
+                        <div class="font-mono text-xs text-steel">AUDIT + MVP</div>
+                        <p class="font-mono text-sm text-steel mt-2">For one-person businesses unsure where to start</p>
+                    </div>
+                    <div class="bg-surface border border-transparent hover:border-cyan/30 p-6 rounded-lg">
+                        <div class="font-display text-3xl font-bold text-cyan mb-2">£1,500-£3,000</div>
+                        <div class="font-mono text-xs text-steel">STARTER AUTOMATION</div>
+                        <p class="font-mono text-sm text-steel mt-2">2-3 interconnected automations in your tools</p>
+                    </div>
+                    <div class="bg-surface border border-transparent hover:border-accent/30 p-6 rounded-lg">
+                        <div class="font-display text-3xl font-bold text-accent mb-2">£3,000+</div>
+                        <div class="font-mono text-xs text-steel">CUSTOM SYSTEM</div>
+                        <p class="font-mono text-sm text-steel mt-2">For growing businesses needing scale</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="relative py-16 bg-[#141419]">
+        <div class="w-full px-6 py-12">
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="font-mono text-xs text-accent mb-4 tracking-widest">// THE PROBLEM</div>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-soft mb-6">
+                    You're Not "Small." <span class="text-steel">You're Just Starting.</span>
+                </h2>
+                <p class="font-mono text-lg text-steel leading-relaxed mb-8">
+                    Running a one-person business doesn't mean you do less work. Actually, you do <strong>more</strong>: sales, operations, client work, admin — all in one person.
+                </p>
+                <p class="font-mono text-lg text-steel leading-relaxed mb-8">
+                    Most solopreneurs spend <strong>10+ hours/week</strong> on manual admin. That's not "building your business." That's <strong>dragging it down</strong>.
+                </p>
+
+                <div class="bg-surface border border-steel/20 rounded-lg p-6">
+                    <h3 class="font-display font-bold text-soft mb-4">What You're Spending Time On Instead of Growing:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span class="font-mono text-sm text-steel">Manually copying data between Gmail → Sheets → CRM</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span class="font-mono text-sm text-steel">Sending invoice reminders to different platforms</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span class="font-mono text-sm text-steel">Falling behind on client follow-ups because you're busy</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span class="font-mono text-sm text-steel">Rebuilding the same report every week from scratch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 AUTOMATIONS -->
+    <section class="relative py-16 bg-void grid-bg">
+        <div class="w-full px-6 py-12">
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="font-mono text-xs text-accent mb-4 tracking-widest">// YOUR 3 NEXT STEPS</div>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-soft mb-12">
+                    Every Solopreneur Should Automate These <span class="text-electric">3 Things</span>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Invoice Automation -->
+                    <div class="template-card bg-surface p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-electric/10 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-soft mb-2">Invoice Automation</h3>
+                        <p class="font-mono text-sm text-steel mb-4">Generate invoices, send reminders, track payments — all without lifting a finger.</p>
+                        <div class="text-accent font-mono text-sm font-semibold mb-2">£200-£250</div>
+                        <ul class="font-mono text-xs text-steel space-y-1">
+                            <li>• Auto-send PDF invoices</li>
+                            <li>• Late payment reminders</li>
+                            <li>• Payment tracking in Sheets</li>
+                        </ul>
+                    </div>
+
+                    <!-- Lead Tracking -->
+                    <div class="template-card bg-surface p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-cyan/10 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-soft mb-2">Lead Tracking</h3>
+                        <p class="font-mono text-sm text-steel mb-4">Capture leads, score them, automate follow-ups so you never miss a chance.</p>
+                        <div class="text-cyan font-mono text-sm font-semibold mb-2">£250-£300</div>
+                        <ul class="font-mono text-xs text-steel space-y-1">
+                            <li>• Capture from forms/emails</li>
+                            <li>• Auto-sort leads</li>
+                            <li>• Scheduled email sequences</li>
+                        </ul>
+                    </div>
+
+                    <!-- Reports -->
+                    <div class="template-card bg-surface p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-soft mb-2">Report Generation</h3>
+                        <p class="font-mono text-sm text-steel mb-4">Create beautiful reports automatically — no more manual data entry.</p>
+                        <div class="text-accent font-mono text-sm font-semibold mb-2">£250-£300</div>
+                        <ul class="font-mono text-xs text-steel space-y-1">
+                            <li>• Auto-generate monthly reports</li>
+                            <li>• Email to yourself/clients</li>
+                            <li>• Custom visualizations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section class="relative py-16 bg-[#141419]">
+        <div class="w-full px-6 py-12">
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="font-mono text-xs text-electric mb-4 tracking-widest">// PERFECT FOR</div>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-soft mb-8">
+                    Solopreneurs, Freelancers & <span class="text-cyan">Early Startups</span>
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4 bg-surface border border-steel/20 p-6 rounded-lg">
+                        <span class="text-electric font-display font-bold text-xl">01</span>
+                        <div>
+                            <h3 class="font-display font-bold text-soft mb-2">Freelancers & Consultants</h3>
+                            <p class="font-mono text-sm text-steel">You don't have an operations team. You need automation to keep your own business running.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 bg-surface border border-steel/20 p-6 rounded-lg">
+                        <span class="text-electric font-display font-bold text-xl">02</span>
+                        <div>
+                            <h3 class="font-display font-bold text-soft mb-2">E-commerce Sellers</h3>
+                            <p class="font-mono text-sm text-steel">You're selling products but spending hours on inventory, orders, and customer updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 bg-surface border border-steel/20 p-6 rounded-lg">
+                        <span class="text-electric font-display font-bold text-xl">03</span>
+                        <div>
+                            <h3 class="font-display font-bold text-soft mb-2">Early-Stage Startups</h3>
+                            <p class="font-mono text-sm text-steel">You're bootstrapped with a £2k-£3k budget. You need lean, functional systems that scale.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 bg-surface border border-steel/20 p-6 rounded-lg">
+                        <span class="text-electric font-display font-bold text-xl">04</span>
+                        <div>
+                            <h3 class="font-display font-bold text-soft mb-2">Service-Based Businesses</h3>
+                            <p class="font-mono text-sm text-steel">You're doing client work, but admin is eating up your time and profitability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI -->
+    <section class="relative py-16 bg-void grid-bg">
+        <div class="w-full px-6 py-12">
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="font-mono text-xs text-accent mb-4 tracking-widest">// ROI</div>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-soft mb-8">
+                    Automation Isn't <span class="text-electric">Expensive.</span> <span class="text-cyan">Manual Work Is.</span>
+                </h2>
+
+                <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <div class="text-electric font-display font-bold text-3xl mb-2">10+ hrs/week</div>
+                        <div class="font-mono text-xs text-steel">Time Saved</div>
+                    </div>
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <div class="text-cyan font-display font-bold text-3xl mb-2">2 months</div>
+                        <div class="font-mono text-xs text-steel">Pays For Itself</div>
+                    </div>
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <div class="text-accent font-display font-bold text-3xl mb-2">£500-1,500</div>
+                        <div class="font-mono text-xs text-steel">Starts From</div>
+                    </div>
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <div class="text-electric font-display font-bold text-3xl mb-2">24/7</div>
+                        <div class="font-mono text-xs text-steel">Automation</div>
+                    </div>
+                </div>
+
+                <p class="font-mono text-lg text-steel leading-relaxed">
+                    If you're spending £30/hour on admin work, an £800 automation saves you £2,400/year.
+                    <span class="text-electric">In 2 months.</span> And it keeps working while you sleep.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="relative py-16 bg-[#141419]">
+        <div class="w-full px-6 py-12">
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="font-mono text-xs text-cyan mb-4 tracking-widest">// FAQ</div>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-soft mb-12">
+                    Common Questions
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <h3 class="font-display font-bold text-soft mb-2">What tools do I need?</h3>
+                        <p class="font-mono text-sm text-steel">You likely already have what you need: Gmail, Google Sheets, maybe a simple CRM. We enhance what you have — no forced migrations.</p>
+                    </div>
+
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <h3 class="font-display font-bold text-soft mb-2">How long does it take to build?</h3>
+                        <p class="font-mono text-sm text-steel">Starters take 1-2 weeks. AUDIT can be done in 30 minutes on a free call.</p>
+                    </div>
+
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <h3 class="font-display font-bold text-soft mb-2">Do I need technical skills?</h3>
+                        <p class="font-mono text-sm text-steel">No. Your team just needs to already use Gmail and Sheets. We handle the technical side.</p>
+                    </div>
+
+                    <div class="bg-surface border border-steel/20 p-6 rounded-lg">
+                        <h3 class="font-display font-bold text-soft mb-2">What happens after the automation is built?</h3>
+                        <p class="font-mono text-sm text-steel">You get documentation, training, and 7 days of support. Plus source code so you own it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-16 bg-void">
+        <div class="w-full px-6 py-12">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-soft mb-6">
+                    Ready to Get <span class="text-accent">Back to Building</span>?
+                </h2>
+                <p class="font-mono text-lg text-steel mb-8 max-w-2xl mx-auto">
+                    Book a free 30-minute audit. We'll show you what's automatable in your system — even if we don't work together.
+                </p>
+                <a href="../index.html#contact-form" class="inline-block bg-accent hover:bg-soft text-void font-mono text-sm font-semibold px-8 py-4 rounded transition-all cta-pulse">
+                    START FREE AUDIT
+                </a>
+                <p class="font-mono text-xs text-steel mt-4">No pitch. No obligation. Just clarity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-steel/20 py-8">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="font-display font-bold text-sm text-soft">
+                    <span class="text-accent">></span>AREMU_CONSULTING<span class="text-steel">_</span>
+                </div>
+                <div class="font-mono text-xs text-steel">
+                    © 2026 Aremu Consulting LTD. Pro-spreadsheet messaging.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
