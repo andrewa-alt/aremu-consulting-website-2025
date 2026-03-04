@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{POST_TITLE}} | The Lab — Aremu Consulting</title>
     <meta name="description" content="{{POST_EXCERPT}}">
-    <meta name="author" content="Andrew Aremu">
+    <meta name="author" content="{{POST_AUTHOR}}">
     
     <!-- Open Graph -->
     <meta property="og:title" content="{{POST_TITLE}} | The Lab — Aremu Consulting">
@@ -15,7 +15,7 @@
     <meta property="og:image" content="{{POST_IMAGE}}">
     <meta property="og:site_name" content="Aremu Consulting">
     <meta property="article:published_time" content="{{PUBLISH_DATE}}">
-    <meta property="article:author" content="Andrew Aremu">
+    <meta property="article:author" content="{{POST_AUTHOR}}">
     <meta property="article:section" content="{{CATEGORY}}">
     
     <!-- Twitter -->
@@ -317,9 +317,9 @@
                 <div class="flex flex-wrap items-center gap-4 font-mono text-sm text-[#6b7280] reveal">
                     <div class="flex items-center gap-2">
                         <div class="w-8 h-8 bg-[#6366f1]/20 rounded-full flex items-center justify-center">
-                            <span class="text-[#6366f1] text-xs font-bold">AA</span>
+                            <span class="text-[#6366f1] text-xs font-bold">{{AUTHOR_INITIALS}}</span>
                         </div>
-                        <span class="text-[#e2e2e2]">Andrew Aremu</span>
+                        <span class="text-[#e2e2e2]">{{POST_AUTHOR}}</span>
                     </div>
                     <span>|</span>
                     <span>{{PUBLISH_DATE}}</span>
