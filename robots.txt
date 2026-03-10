@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /lab/
+Allow: /services/
+Allow: /case-studies/
+Disallow: /assets/
+Sitemap: https://www.aremuconsulting.com/sitemap.xml
