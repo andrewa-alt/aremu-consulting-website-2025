@@ -16,6 +16,8 @@
     <link rel="canonical" href="https://www.aremuconsulting.com/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
     <script type="application/ld+json">
@@ -87,6 +89,7 @@
     </script>
 </head>
 <body class="antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#6366f1] focus:text-[#0a0a0f] focus:font-mono focus:font-semibold focus:rounded">Skip to main content</a>
     <div class="noise-overlay"></div>
     <div class="scanlines"></div>
     
@@ -123,7 +126,7 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center grid-bg overflow-hidden">
+    <section id="main-content" class="relative min-h-screen flex items-center grid-bg overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-1/4 right-0 w-96 h-96 bg-[#6366f1]/10 rounded-full blur-3xl"></div>
             <div class="absolute bottom-1/4 left-0 w-80 h-80 bg-[#22d3ee]/10 rounded-full blur-3xl"></div>
@@ -371,6 +374,56 @@
                     </a>
                 </div>
                 <div class="mt-8 font-mono text-sm text-[#6b7280]">Or drop us a line at <a href="mailto:segun.a@aremuconsulting.com" class="text-[#22d3ee] hover:text-[#f472b6] transition-colors">segun.a@aremuconsulting.com</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="relative py-20 bg-[#0a0a0f]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <div class="font-mono text-xs text-[#22d3ee] mb-4 tracking-widest">// FAQ</div>
+                    <h2 class="font-display text-2xl md:text-3xl font-bold text-[#e2e2e2]">Common Questions</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="bg-[#141419] border border-[#6b7280]/20 rounded-lg group">
+                        <summary class="px-6 py-4 cursor-pointer font-display font-semibold text-[#e2e2e2] flex justify-between items-center">
+                            <span>What tools do I need to get started?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 pb-4">
+                            <p class="font-mono text-sm text-[#6b7280]">You likely already have what you need: Gmail, Google Sheets, maybe a CRM. We enhance what you have — no forced migrations or expensive new subscriptions.</p>
+                        </div>
+                    </details>
+                    <details class="bg-[#141419] border border-[#6b7280]/20 rounded-lg group">
+                        <summary class="px-6 py-4 cursor-pointer font-display font-semibold text-[#e2e2e2] flex justify-between items-center">
+                            <span>How long does a typical automation take?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 pb-4">
+                            <p class="font-mono text-sm text-[#6b7280]">Starter automations take 1-2 weeks. Full custom systems typically 4-8 weeks from kickoff to production. Complexity depends on your workflow.</p>
+                        </div>
+                    </details>
+                    <details class="bg-[#141419] border border-[#6b7280]/20 rounded-lg group">
+                        <summary class="px-6 py-4 cursor-pointer font-display font-semibold text-[#e2e2e2] flex justify-between items-center">
+                            <span>Do I need technical skills?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 pb-4">
+                            <p class="font-mono text-sm text-[#6b7280]">No technical skills required from your side. Your team just needs to use Gmail and Google Sheets. We handle all the technical build.</p>
+                        </div>
+                    </details>
+                    <details class="bg-[#141419] border border-[#6b7280]/20 rounded-lg group">
+                        <summary class="px-6 py-4 cursor-pointer font-display font-semibold text-[#e2e2e2] flex justify-between items-center">
+                            <span>What happens after the automation is built?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 pb-4">
+                            <p class="font-mono text-sm text-[#6b7280]">You get full documentation, training, and 7 days of support. Plus the source code — you own the system. No ongoing subscriptions or lock-in.</p>
+                        </div>
+                    </details>
+                </div>
             </div>
         </div>
     </section>
