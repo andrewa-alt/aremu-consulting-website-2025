@@ -407,6 +407,13 @@
         </div>
     </footer>
 
+    <!-- Sticky Mobile CTA -->
+    <div id="mobile-cta" class="fixed bottom-0 left-0 right-0 bg-[#0a0a0f]/95 backdrop-blur-sm border-t border-[#6366f1]/30 p-4 md:hidden z-50 transform translate-y-full transition-transform duration-300">
+        <a href="#contact-form" class="block w-full py-3.5 bg-[#f472b6] text-center font-mono font-semibold text-[#0a0a0f] rounded-lg">
+            BOOK FREE AUDIT
+        </a>
+    </div>
+
     <script>
         const heroText = document.getElementById('hero-text');
         const text = "We give you 10 hours of your week back.";
@@ -445,6 +452,30 @@
             });
         }, { threshold: 0.1 });
         revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Sticky Mobile CTA - show after hero
+        const mobileCta = document.getElementById('mobile-cta');
+        const heroSection = document.querySelector('section');
+        let ctaShown = false;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth < 768 && !ctaShown) {
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                if (window.scrollY > heroBottom * 0.6) {
+                    mobileCta.classList.remove('translate-y-full');
+                    ctaShown = true;
+                }
+            }
+        });
+        // Close CTA when form is visible
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const formObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && window.innerWidth < 768) {
+                    mobileCta.classList.add('translate-y-full');
+                }
+            }, { threshold: 0.1 });
+            formObserver.observe(contactForm);
+        }
     </script>
 </body>
 </html>
