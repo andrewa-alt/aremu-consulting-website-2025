@@ -9,6 +9,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles.css">
+    <!-- Google Analytics 4 -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-AREMUXXXXX'></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-AREMUXXXXX');
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.aremuconsulting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Lab",
+          "item": "https://www.aremuconsulting.com/lab/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse",
+          "item": "https://www.aremuconsulting.com/lab/inventory-sync-failures.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- BlogPosting Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse",
+      "author": { "@type": "Person", "name": "Leke" },
+      "datePublished": "February 25, 2026",
+      "image": "https://www.aremuconsulting.com/lab/images/image1.png",
+      "publisher": { "@type": "Organization", "name": "Aremu Consulting" }
+    }
+    </script>
+
 <style>
         body {
             background-color: #0a0a0f;
@@ -27,7 +77,7 @@
     <article class="max-w-4xl mx-auto px-6 py-16">
         <header class="mb-12">
             <p class="text-steel font-mono text-sm mb-4">February 25, 2026</p>
-            <img src="images/image1.png" alt="Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse" class="w-full rounded-lg mb-8 border border-electric/20">
+            <img src="images/image1.png" alt="Inventory sync failures blog post" width="1024" height="1024" loading="lazy" decoding="async">"Inventory Sync Failures Are Quietly Stealing £8,000/Month From Your Warehouse" class="w-full rounded-lg mb-8 border border-electric/20">
         </header>
         
         <div class="prose prose-invert max-w-none">
@@ -94,6 +144,23 @@
 
 <p class="text-soft leading-relaxed mb-4">Your inventory sync isn't failing dramatically. It's failing expensively. Fix the architecture, and the operational headaches solve themselves.</p>
 
+        </div>
+        
+        <!-- Related Articles -->
+        <div class="mt-16 mb-8">
+            <h3 class="font-mono text-sm text-electric mb-6 tracking-widest">// RELATED ARTICLES</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="./infallible-inventory-gut-revenue-black-hole.html" class="group p-4 bg-surface border border-electric/20 rounded-lg hover:border-electric/50 transition-all">
+                    <div class="font-mono text-xs text-cyan mb-2">INVENTORY</div>
+                    <h4 class="font-display text-soft group-hover:text-electric transition-colors">£40K Revenue Black Hole</h4>
+                    <p class="font-mono text-xs text-gray-400 mt-2">Stop inventory gut instinct</p>
+                </a>
+                <a href="./manual-inventory-cost.html" class="group p-4 bg-surface border border-electric/20 rounded-lg hover:border-electric/50 transition-all">
+                    <div class="font-mono text-xs text-cyan mb-2">COSTS</div>
+                    <h4 class="font-display text-soft group-hover:text-electric transition-colors">$120K Annual Drain: Manual Inventory</h4>
+                    <p class="font-mono text-xs text-gray-400 mt-2">The hidden cost of manual processes</p>
+                </a>
+            </div>
         </div>
         
         <footer class="mt-16 pt-8 border-t border-steel/20">

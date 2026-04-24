@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Aremu Consulting</title>
+    <meta name="robots" content="index, follow">
     <meta name="description" content="Business automation services: CRM automation, workflow streamlining, lead qualification, document processing. Book your free 30-minute audit.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swapfamily=Space+Grotesk:wght@500;600;700family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swapdisplay=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/styles.css">
+    
+    <!-- Google Analytics 4 -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-AREMUXXXXX'></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-AREMUXXXXX');
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.aremuconsulting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.aremuconsulting.com/services/"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="antialiased">
     <div class="noise-overlay"></div>
@@ -19,7 +51,7 @@
         <div class="w-full px-6 lg:px-12 xl:px-20">
             <div class="flex items-center justify-between h-20">
                 <a href="../index.html" class="flex items-center gap-3 font-display font-bold text-xl text-[#e2e2e2]">
-                    <img src="../assets/logo.png" alt="Aremu Consulting" class="h-10 w-auto">
+                    <img src="../assets/logo.png" alt="Aremu Consulting" class="h-10 w-auto" width="1024" height="1024">
                     <span class="text-[#f472b6]">></span>AREMU_CONSULTING<span class="text-[#6b7280]">_</span>
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
@@ -238,7 +270,8 @@
         <div class="w-full px-6 lg:px-12 xl:px-20">
             <div class="max-w-4xl reveal">
                 <div class="font-mono text-sm text-[#6366f1] mb-4 tracking-widest">// CRM_AUTOMATION</div>
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-8">Your CRM + Google Sheets, Working Together Automatically</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-4">Your CRM + Google Sheets, Working Together Automatically</h2>
+                <h3 class="font-mono text-lg text-[#6b7280] mb-8">CRM Automation Services for UK Small Businesses</h3>
 
                 <div class="bg-[#0a0a0f] p-6 rounded-lg border-l-4 border-[#6366f1] mb-8">
                     <p class="font-mono text-[#e2e2e2]"><span class="text-[#6366f1]">PROBLEM:</span> <span class="text-[#6b7280]">Your team spends hours manually copying data between tools.</span></p>
@@ -276,7 +309,8 @@
         <div class="w-full px-6 lg:px-12 xl:px-20">
             <div class="max-w-4xl reveal">
                 <div class="font-mono text-sm text-[#22d3ee] mb-4 tracking-widest">// WORKFLOW_STREAMLINING</div>
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-8">Your Apps Should Talk to Each Other</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-4">Your Apps Should Talk to Each Other</h2>
+                <h3 class="font-mono text-lg text-[#6b7280] mb-8">Workflow Automation with Zapier, Make & n8n</h3>
                 
                 <div class="bg-[#141419] p-6 rounded-lg border-l-4 border-[#f472b6] mb-8">
                     <p class="font-mono text-[#e2e2e2]"><span class="text-[#f472b6]">PROBLEM:</span> <span class="text-[#6b7280]">Your team copies data between 5 different apps every day.</span></p>
@@ -368,7 +402,105 @@
         </div>
     </section>
 
+    <!-- FAQ SECTION -->
+    <section id="faq" class="relative py-20 bg-[#141419]">
+        <div class="w-full px-6 lg:px-12 xl:px-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-12 reveal">
+                    <div class="font-mono text-sm text-[#f472b6] mb-4 tracking-widest">// FAQ</div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-[#e2e2e2] mb-4">Frequently Asked Questions</h2>
+                    <p class="font-mono text-[#6b7280]">Common questions about our automation services for UK businesses.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-[#0a0a0f] rounded-lg border border-[#6b7280]/20 reveal">
+                        <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleFaq(this)">
+                            <span class="font-mono text-[#e2e2e2] font-semibold">How long does automation implementation typically take?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5">
+                            <p class="font-mono text-[#6b7280]">Most automation projects take 2-6 weeks from kickoff to launch. Simple workflows can be live in as little as 1-2 weeks, while more complex systems with multiple integrations may take 8-12 weeks. We'll give you a clear timeline during your free consultation.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-[#0a0a0f] rounded-lg border border-[#6b7280]/20 reveal">
+                        <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleFaq(this)">
+                            <span class="font-mono text-[#e2e2e2] font-semibold">What's the typical ROI for automation projects?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5">
+                            <p class="font-mono text-[#6b7280]">Most clients see positive ROI within 3-6 months. Our case studies show clients saving 10-20 hours per week, which translates to £5,000-£20,000+ in reclaimed productivity annually. We help you quantify your specific ROI before we start any project.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-[#0a0a0f] rounded-lg border border-[#6b7280]/20 reveal">
+                        <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleFaq(this)">
+                            <span class="font-mono text-[#e2e2e2] font-semibold">Do I need to change my existing tools?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5">
+                            <p class="font-mono text-[#6b7280]">No. We specialize in working with your existing tools. If you love your CRM, Google Sheets, or other platforms, we automate the manual parts without forcing you to migrate. Most clients never need to change their core software stack.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-[#0a0a0f] rounded-lg border border-[#6b7280]/20 reveal">
+                        <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleFaq(this)">
+                            <span class="font-mono text-[#e2e2e2] font-semibold">What automation platforms do you work with?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5">
+                            <p class="font-mono text-[#6b7280]">We're platform-agnostic, but specialize in n8n (open-source, cost-effective), Zapier, and Make. We also build custom solutions using Google Apps Script, Python, and API integrations. The right tool depends on your specific needs and budget.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-[#0a0a0f] rounded-lg border border-[#6b7280]/20 reveal">
+                        <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between" onclick="toggleFaq(this)">
+                            <span class="font-mono text-[#e2e2e2] font-semibold">Do you offer ongoing support after implementation?</span>
+                            <svg class="w-5 h-5 text-[#6366f1] transform transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5">
+                            <p class="font-mono text-[#6b7280]">Yes. All our projects include documentation and training. We also offer optional monthly support retainers for clients who want ongoing monitoring, updates, and optimization. Many clients start with a one-time build and add support later as their needs evolve.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="mt-12 p-8 bg-gradient-to-br from-[#6366f1]/10 to-[#22d3ee]/10 rounded-lg border border-[#6b7280]/20 text-center reveal">
+                    <h3 class="font-display text-2xl font-bold text-[#e2e2e2] mb-4">Have More Questions?</h3>
+                    <p class="font-mono text-[#6b7280] mb-6">Book a free 30-minute call and get answers specific to your business.</p>
+                    <a href="../index.html#contact-form" class="inline-flex items-center gap-2 px-8 py-4 bg-[#f472b6] text-[#0a0a0f] font-mono font-semibold hover:bg-[#e2e2e2] transition-all">
+                        <span>Book Free Consultation</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-content').forEach(item => {
+                if (item !== content) {
+                    item.classList.add('hidden');
+                    item.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                }
+            });
+            
+            // Toggle current FAQ
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+        
         // Scroll reveal animation
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {

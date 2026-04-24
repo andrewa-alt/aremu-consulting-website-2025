@@ -28,6 +28,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles.css">
+    <!-- Google Analytics 4 -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-AREMUXXXXX'></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-AREMUXXXXX');
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.aremuconsulting.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Lab",
+          "item": "https://www.aremuconsulting.com/lab/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Your "Reliable" Shopify Inventory Sync Is a £40K Oversell Nightmare",
+          "item": "https://www.aremuconsulting.com/lab/shopify-inventory-sync-oversell-nightmare.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- BlogPosting Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Your "Reliable" Shopify Inventory Sync Is a £40K Oversell Nightmare",
+      "author": { "@type": "Person", "name": "Leke" },
+      "datePublished": "2026-03-18",
+      "image": "https://aremuconsulting.com/lab/images/shopify-inventory-sync-oversell-nightmare.png",
+      "publisher": { "@type": "Organization", "name": "Aremu Consulting" }
+    }
+    </script>
+
 <style>
         body {
             background-color: #0a0a0f;
@@ -75,4 +125,62 @@
 
             <h3 class="text-2xl font-display font-semibold text-electric mt-8 mb-4">2. The SKU Tangled Web: When Your "Unique" Becomes Generic</h3>
 
-            <p class="text-soft leading-relaxed mb-4">This is where things get truly insidious. Your "reliable" sync tool is likely trying to match products
+            <p class="text-soft leading-relaxed mb-4">This is where things get truly insidious. Your "reliable" sync tool is likely trying to match products across systems using SKU codes. But here's the kicker: most sync tools treat SKUs as simple strings. "SKU-123" matches "SKU-123" perfectly, right? Wrong. When Shopify adds variants or your ERP changes formatting, suddenly "sku-123" doesn't match "SKU-123" anymore.</p>
+
+            <p class="text-soft leading-relaxed mb-4">This mismatch creates phantom inventory. Your sync thinks it has 50 units. Shopify shows 50 units. But they're looking at different products. When an order comes in, your warehouse ships the wrong item, or you ship nothing at all because your sync doesn't realize it needs to decrement stock.</p>
+
+            <h3 class="text-2xl font-display font-semibold text-electric mt-8 mb-4">3. The Buffer Zone Blunder: Over-Compensating with Safety Stock</h3>
+
+            <p class="text-soft leading-relaxed mb-4">Here's the thing about safety stock: it's supposed to be a buffer, not a permanent fixture. But when your sync is unreliable, you start padding numbers. "Let's keep 20 extra units just in case." Multiply that across 200 SKUs, and suddenly you have £40,000 tied up in inventory that's just sitting there, waiting for a disaster that may never come.</p>
+
+            <p class="text-soft leading-relaxed mb-4">That's not inventory management. That's inventory anxiety.</p>
+
+            <h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">The Fix: Real-Time Visibility with n8n Webhooks</h2>
+
+            <p class="text-soft leading-relaxed mb-4">The solution isn't more safety stock or a "better" sync tool. It's real-time inventory visibility that doesn't depend on polling intervals or API queues.</p>
+
+            <p class="text-soft leading-relaxed mb-4"><strong class="text-electric">What we built for a client:</strong></p>
+            <ul class="text-soft leading-relaxed mb-4 list-disc list-inside space-y-2">
+                <li>n8n webhook triggered on every Shopify order</li>
+                <li>Instant inventory check against their database (not Shopify's cached value)</li>
+                <li>Dynamic buffer calculation based on sales velocity</li>
+                <li>SMS alert if stock drops below threshold</li>
+                <li>Auto-hold on checkout if inventory is uncertain</li>
+            </ul>
+
+            <p class="text-soft leading-relaxed mb-4"><strong class="text-accent">Result:</strong> Zero oversells in 6 months. Safety stock reduced by 35%. Customer complaints dropped from 12/month to 1.</p>
+
+            <h2 class="text-3xl font-display font-semibold text-cyan mt-12 mb-6">Ready to Fix Your Shopify Inventory Sync?</h2>
+
+            <p class="text-soft leading-relaxed mb-4">Stop letting inventory sync errors cost you £40K+ yearly. <a href='../index.html#contact-form' class='text-electric hover:text-cyan transition-colors'>Book a free audit</a> to see how real-time inventory management can eliminate oversells and reduce safety stock requirements.</p>
+        </div>
+        
+        <!-- Related Articles -->
+        <div class="mt-16 mb-8">
+            <h3 class="font-mono text-sm text-electric mb-6 tracking-widest">// RELATED ARTICLES</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="./inventory-sync-failures.html" class="group p-4 bg-surface border border-electric/20 rounded-lg hover:border-electric/50 transition-all">
+                    <div class="font-mono text-xs text-cyan mb-2">INVENTORY</div>
+                    <h4 class="font-display text-soft group-hover:text-electric transition-colors">Inventory Sync Failures</h4>
+                    <p class="font-mono text-xs text-gray-400 mt-2">Stop £8K/month leaks</p>
+                </a>
+                <a href="./plug-and-play-integrations-silent-assassins.html" class="group p-4 bg-surface border border-electric/20 rounded-lg hover:border-electric/50 transition-all">
+                    <div class="font-mono text-xs text-cyan mb-2">INTEGRATIONS</div>
+                    <h4 class="font-display text-soft group-hover:text-electric transition-colors">Integration Drift: Silent Assassins</h4>
+                    <p class="font-mono text-xs text-gray-400 mt-2">Prevent data rot</p>
+                </a>
+            </div>
+        </div>
+        
+        <footer class="mt-16 pt-8 border-t border-steel/20">
+            <div class="bg-surface border border-electric/20 rounded-lg p-8">
+                <h3 class="text-2xl font-display font-semibold text-electric mb-4">Ready to stop the £40K bleed?</h3>
+                <p class="text-soft mb-6">Let's discuss how we can fix your Shopify inventory sync.</p>
+                <a href="mailto:hello@aremuconsulting.com" class="inline-block bg-electric hover:bg-cyan text-void font-semibold px-6 py-3 rounded-lg transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </footer>
+    </article>
+</body>
+</html>
