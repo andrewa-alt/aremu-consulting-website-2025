@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Agent Harness — Aremu Consulting Case Study</title>
+    <meta name="description" content="An all-in-one AI workspace with deep research, document processing, calendar management, task automation, cron scheduling, and a persistent chat agent that controls every tool.">
+    <meta property="og:title" content="Personal Agent Harness — Aremu Consulting">
+    <meta property="og:description" content="All-in-one AI workspace. Agent-controlled research, documents, calendar, tasks, and cron — all from chat.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../assets/harness-hero.png">
+    <link rel="canonical" href="https://www.aremuconsulting.com/case-studies/personal-agent-harness.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { mono: ['JetBrains Mono','Fira Code','monospace'], display: ['Inter','system-ui','sans-serif'] },
+            colors: { surface: { DEFAULT:'#0a0a0f', raised:'#141419', elevated:'#1a1a21' } }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-[#0a0a0f] text-[#e2e2e2] font-display">
+    <div class="w-full px-6 lg:px-12 xl:px-20 py-12">
+        <a href="../" class="font-mono text-sm text-[#6366f1] hover:text-[#f472b6] transition-colors">← Back to Aremu Consulting</a>
+    </div>
+
+    <section class="w-full px-6 lg:px-12 xl:px-20 pb-20">
+        <div class="max-w-4xl mx-auto">
+            <div class="font-mono text-xs text-[#f472b6] mb-4 tracking-widest">AGENT_HARNESS</div>
+            <h1 class="font-display text-4xl lg:text-5xl font-bold mb-6">Personal Agent Harness</h1>
+            <p class="font-mono text-lg text-[#6b7280] leading-relaxed mb-12">An all-in-one AI workspace that puts a persistent agent in control. Research, documents, calendar, tasks, notes, cron jobs, memory search, and model comparison — all driven through a single chat interface.</p>
+
+            <!-- Hero Screenshot -->
+            <div class="rounded-lg overflow-hidden border border-[#6b7280]/20 mb-16">
+                <img src="../assets/harness-chat.png" alt="PI.dev chat interface with agent tools" class="w-full">
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="bg-[#141419] rounded-lg p-8 border border-[#6b7280]/20">
+                    <div class="font-display text-3xl font-bold text-[#22d3ee] mb-2">26+</div>
+                    <div class="font-mono text-sm text-[#6b7280]">Agent Tools Available</div>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-8 border border-[#6b7280]/20">
+                    <div class="font-display text-3xl font-bold text-[#6366f1] mb-2">1-Click</div>
+                    <div class="font-mono text-sm text-[#6b7280]">Research → Document Pipeline</div>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-8 border border-[#6b7280]/20">
+                    <div class="font-display text-3xl font-bold text-[#f472b6] mb-2">100%</div>
+                    <div class="font-mono text-sm text-[#6b7280]">Agent-Controlled Operations</div>
+                </div>
+            </div>
+
+            <!-- The Problem -->
+            <h2 class="font-display text-2xl font-bold mb-4">The Problem</h2>
+            <p class="font-mono text-[#6b7280] leading-relaxed mb-8">Productivity tools are fragmented. You switch between chat, documents, calendar, task managers, search, and research tools — losing context at every boundary. Most AI assistants can talk but can't actually <em>do</em> anything. They hallucinate calendar entries, pretend to schedule meetings, and can't access your actual data.</p>
+
+            <!-- The Solution -->
+            <h2 class="font-display text-2xl font-bold mb-4">The Solution</h2>
+            <p class="font-mono text-[#6b7280] leading-relaxed mb-12">A unified workspace where a single AI agent controls everything. Chat is the interface. Floating windows show tools in action. The agent doesn't pretend — it executes real API calls to create calendar events, build documents, analyze spreadsheets, run deep research, manage cron jobs, search memory, and compare models side-by-side.</p>
+
+            <!-- Feature Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <div class="bg-[#141419] rounded-lg p-6 border border-[#6b7280]/20">
+                    <div class="font-mono text-xs text-[#6366f1] mb-2">DEEP_RESEARCH</div>
+                    <h3 class="font-display text-lg font-bold mb-2">Multi-Round Research Pipeline</h3>
+                    <p class="font-mono text-sm text-[#6b7280]">Dynamic pivot search with convergence detection. Two-pass LLM synthesis produces thesis-quality reports with citations. Automatic document creation from results.</p>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-6 border border-[#6b7280]/20">
+                    <div class="font-mono text-xs text-[#22d3ee] mb-2">DOCUMENT_SUITE</div>
+                    <h3 class="font-display text-lg font-bold mb-2">Agent-First Office Suite</h3>
+                    <p class="font-mono text-sm text-[#6b7280]">Markdown editor with PDF export (weasyprint). File upload with auto-extraction (PDF, DOCX, XLSX, CSV). Spreadsheet analysis via pandas. Version history. AI suggestions.</p>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-6 border border-[#6b7280]/20">
+                    <div class="font-mono text-xs text-[#f472b6] mb-2">CALENDAR_TASKS</div>
+                    <h3 class="font-display text-lg font-bold mb-2">Calendar & Task Automation</h3>
+                    <p class="font-mono text-sm text-[#6b7280]">Full CRUD via chat. "Schedule a meeting tomorrow at 3pm" actually creates the event. Tasks with status tracking, team assignment, and deadline awareness.</p>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-6 border border-[#6b7280]/20">
+                    <div class="font-mono text-xs text-[#a78bfa] mb-2">CRON_DAEMON</div>
+                    <h3 class="font-display text-lg font-bold mb-2">Scheduled Jobs with Auto-Healing</h3>
+                    <p class="font-mono text-sm text-[#6b7280]">Background daemon auto-starts with the server. Missed-job detection on restart. Error logging with diagnostics. Self-healing cron job that fixes broken tasks daily.</p>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-6 border border-[#6b7280]/20">
+                    <div class="font-mono text-xs text-[#34d399] mb-2">MEMORY_SYSTEM</div>
+                    <h3 class="font-display text-lg font-bold mb-2">Dual Memory Architecture</h3>
+                    <p class="font-mono text-sm text-[#6b7280]">FTS5 session search + RAG (ChromaDB) + LLM Wiki. The agent can search past conversations, retrieve knowledge base entries, and reference everything you've discussed.</p>
+                </div>
+                <div class="bg-[#141419] rounded-lg p-6 border border-[#6b7280]/20">
+                    <div class="font-mono text-xs text-[#fbbf24] mb-2">MODEL_COMPARISON</div>
+                    <h3 class="font-display text-lg font-bold mb-2">Blind Model Comparison</h3>
+                    <p class="font-mono text-sm text-[#6b7280]">Side-by-side streaming with blind identity hiding. Vote on winners. Scoreboard tracks history. "Compare GPT-4o vs Claude on this prompt" — done in seconds.</p>
+                </div>
+            </div>
+
+            <!-- Screenshots -->
+            <h2 class="font-display text-2xl font-bold mb-8">In Action</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="rounded-lg overflow-hidden border border-[#6b7280]/20">
+                    <img src="../assets/harness-documents.png" alt="Documents page with card grid and PDF export" class="w-full">
+                </div>
+                <div class="rounded-lg overflow-hidden border border-[#6b7280]/20">
+                    <img src="../assets/harness-research.png" alt="Research progress in floating window" class="w-full">
+                </div>
+                <div class="rounded-lg overflow-hidden border border-[#6b7280]/20">
+                    <img src="../assets/harness-calendar.png" alt="Calendar with agent-created events" class="w-full">
+                </div>
+                <div class="rounded-lg overflow-hidden border border-[#6b7280]/20">
+                    <img src="../assets/harness-cron.png" alt="Cron job management" class="w-full">
+                </div>
+            </div>
+
+            <!-- Architecture -->
+            <h2 class="font-display text-2xl font-bold mb-4">Architecture</h2>
+            <p class="font-mono text-[#6b7280] leading-relaxed mb-8">Built on a 3-layer architecture: <span class="text-[#6366f1]">directives</span> (what to do) → <span class="text-[#22d3ee]">orchestration</span> (decision making) → <span class="text-[#f472b6]">execution</span> (deterministic Python). LLMs handle reasoning; deterministic scripts handle reliability. Floating window system for tool visualization. FastAPI backend, vanilla JS frontend. OpenRouter for model access. Weasyprint for PDF generation.</p>
+
+            <!-- Tech Stack -->
+            <div class="flex flex-wrap gap-3 mb-16">
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">Python/FastAPI</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">Vanilla JS</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">OpenRouter</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">WeasyPrint</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">Pandas</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">pdfplumber</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">ChromaDB</span>
+                <span class="font-mono text-xs px-3 py-1.5 bg-[#141419] border border-[#6b7280]/20 rounded-full text-[#6b7280]">WebSocket/SSE</span>
+            </div>
+
+            <!-- CTA -->
+            <div class="bg-[#141419] rounded-lg p-10 border border-[#6b7280]/20 text-center">
+                <h2 class="font-display text-2xl font-bold mb-4">Want your own agent harness?</h2>
+                <p class="font-mono text-[#6b7280] mb-8">Every business deserves an AI workspace that actually does the work. Let's build yours.</p>
+                <a href="../#consultation" class="inline-block font-mono text-sm bg-[#6366f1] hover:bg-[#f472b6] text-white px-8 py-3 rounded-lg transition-colors">BOOK_FREE_AUDIT</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
